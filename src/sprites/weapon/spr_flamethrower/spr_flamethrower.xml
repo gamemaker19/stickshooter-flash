@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>39</xorigin>
+	<yorigin>24</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>77</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>48</bbox_bottom>
+	<width>78</width>
+	<height>49</height>
+	<frames>
+		<frame index="0">spr_flamethrower_0.png</frame>
+	</frames>
+</sprite>

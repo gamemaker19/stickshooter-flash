@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>9</xorigin>
+	<yorigin>16</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>23</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>15</bbox_bottom>
+	<width>24</width>
+	<height>16</height>
+	<frames>
+		<frame index="0">spr_police_head_0.png</frame>
+	</frames>
+</sprite>

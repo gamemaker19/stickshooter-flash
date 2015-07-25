@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>256</xorigin>
+	<yorigin>256</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>48</bbox_left>
+	<bbox_right>471</bbox_right>
+	<bbox_top>40</bbox_top>
+	<bbox_bottom>461</bbox_bottom>
+	<width>512</width>
+	<height>512</height>
+	<frames>
+		<frame index="0">spr_smoke_0.png</frame>
+	</frames>
+</sprite>

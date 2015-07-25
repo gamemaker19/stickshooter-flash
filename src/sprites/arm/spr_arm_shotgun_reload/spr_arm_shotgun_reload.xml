@@ -1,0 +1,31 @@
+<sprite>
+	<xorigin>16</xorigin>
+	<yorigin>0</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>7</bbox_left>
+	<bbox_right>42</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>29</bbox_bottom>
+	<width>45</width>
+	<height>31</height>
+	<frames>
+		<frame index="0">spr_arm_shotgun_reload_0.png</frame>
+		<frame index="1">spr_arm_shotgun_reload_1.png</frame>
+		<frame index="2">spr_arm_shotgun_reload_2.png</frame>
+		<frame index="3">spr_arm_shotgun_reload_3.png</frame>
+		<frame index="4">spr_arm_shotgun_reload_4.png</frame>
+		<frame index="5">spr_arm_shotgun_reload_5.png</frame>
+		<frame index="6">spr_arm_shotgun_reload_6.png</frame>
+		<frame index="7">spr_arm_shotgun_reload_7.png</frame>
+		<frame index="8">spr_arm_shotgun_reload_8.png</frame>
+		<frame index="9">spr_arm_shotgun_reload_9.png</frame>
+		<frame index="10">spr_arm_shotgun_reload_10.png</frame>
+		<frame index="11">spr_arm_shotgun_reload_11.png</frame>
+		<frame index="12">spr_arm_shotgun_reload_12.png</frame>
+		<frame index="13">spr_arm_shotgun_reload_13.png</frame>
+		<frame index="14">spr_arm_shotgun_reload_14.png</frame>
+		<frame index="15">spr_arm_shotgun_reload_15.png</frame>
+		<frame index="16">spr_arm_shotgun_reload_16.png</frame>
+	</frames>
+</sprite>

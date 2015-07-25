@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>14</xorigin>
+	<yorigin>41</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>27</bbox_right>
+	<bbox_top>3</bbox_top>
+	<bbox_bottom>82</bbox_bottom>
+	<width>28</width>
+	<height>83</height>
+	<frames>
+		<frame index="0">spr_player_fall_0.png</frame>
+	</frames>
+</sprite>

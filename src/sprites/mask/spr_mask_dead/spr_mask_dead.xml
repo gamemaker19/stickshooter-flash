@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>52</xorigin>
+	<yorigin>45</yorigin>
+	<sepmasks>-1</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>103</bbox_right>
+	<bbox_top>70</bbox_top>
+	<bbox_bottom>84</bbox_bottom>
+	<width>104</width>
+	<height>90</height>
+	<frames>
+		<frame index="0">spr_mask_dead_0.png</frame>
+	</frames>
+</sprite>

@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>250</xorigin>
+	<yorigin>295</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>499</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>590</bbox_bottom>
+	<width>500</width>
+	<height>591</height>
+	<frames>
+		<frame index="0">spr_l1_5_0.png</frame>
+	</frames>
+</sprite>

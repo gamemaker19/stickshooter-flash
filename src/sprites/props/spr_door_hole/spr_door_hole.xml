@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>33</xorigin>
+	<yorigin>48</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>66</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>96</bbox_bottom>
+	<width>67</width>
+	<height>97</height>
+	<frames>
+		<frame index="0">spr_door_hole_0.png</frame>
+	</frames>
+</sprite>

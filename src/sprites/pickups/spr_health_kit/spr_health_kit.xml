@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>12</xorigin>
+	<yorigin>10</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>24</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>20</bbox_bottom>
+	<width>25</width>
+	<height>21</height>
+	<frames>
+		<frame index="0">spr_health_kit_0.png</frame>
+	</frames>
+</sprite>

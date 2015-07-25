@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>15</xorigin>
+	<yorigin>3</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>29</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>6</bbox_bottom>
+	<width>30</width>
+	<height>7</height>
+	<frames>
+		<frame index="0">spr_rocket_0.png</frame>
+	</frames>
+</sprite>

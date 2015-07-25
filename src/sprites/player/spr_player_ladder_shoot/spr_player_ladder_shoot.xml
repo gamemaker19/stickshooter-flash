@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>18</xorigin>
+	<yorigin>53</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>4</bbox_left>
+	<bbox_right>26</bbox_right>
+	<bbox_top>10</bbox_top>
+	<bbox_bottom>100</bbox_bottom>
+	<width>36</width>
+	<height>107</height>
+	<frames>
+		<frame index="0">spr_player_ladder_shoot_0.png</frame>
+	</frames>
+</sprite>

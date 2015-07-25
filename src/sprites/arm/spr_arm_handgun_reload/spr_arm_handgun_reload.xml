@@ -1,0 +1,43 @@
+<sprite>
+	<xorigin>16</xorigin>
+	<yorigin>0</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>7</bbox_left>
+	<bbox_right>42</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>29</bbox_bottom>
+	<width>45</width>
+	<height>31</height>
+	<frames>
+		<frame index="0">spr_arm_handgun_reload_0.png</frame>
+		<frame index="1">spr_arm_handgun_reload_1.png</frame>
+		<frame index="2">spr_arm_handgun_reload_2.png</frame>
+		<frame index="3">spr_arm_handgun_reload_3.png</frame>
+		<frame index="4">spr_arm_handgun_reload_4.png</frame>
+		<frame index="5">spr_arm_handgun_reload_5.png</frame>
+		<frame index="6">spr_arm_handgun_reload_6.png</frame>
+		<frame index="7">spr_arm_handgun_reload_7.png</frame>
+		<frame index="8">spr_arm_handgun_reload_8.png</frame>
+		<frame index="9">spr_arm_handgun_reload_9.png</frame>
+		<frame index="10">spr_arm_handgun_reload_10.png</frame>
+		<frame index="11">spr_arm_handgun_reload_11.png</frame>
+		<frame index="12">spr_arm_handgun_reload_12.png</frame>
+		<frame index="13">spr_arm_handgun_reload_13.png</frame>
+		<frame index="14">spr_arm_handgun_reload_14.png</frame>
+		<frame index="15">spr_arm_handgun_reload_15.png</frame>
+		<frame index="16">spr_arm_handgun_reload_16.png</frame>
+		<frame index="17">spr_arm_handgun_reload_17.png</frame>
+		<frame index="18">spr_arm_handgun_reload_18.png</frame>
+		<frame index="19">spr_arm_handgun_reload_19.png</frame>
+		<frame index="20">spr_arm_handgun_reload_20.png</frame>
+		<frame index="21">spr_arm_handgun_reload_21.png</frame>
+		<frame index="22">spr_arm_handgun_reload_22.png</frame>
+		<frame index="23">spr_arm_handgun_reload_23.png</frame>
+		<frame index="24">spr_arm_handgun_reload_24.png</frame>
+		<frame index="25">spr_arm_handgun_reload_25.png</frame>
+		<frame index="26">spr_arm_handgun_reload_26.png</frame>
+		<frame index="27">spr_arm_handgun_reload_27.png</frame>
+		<frame index="28">spr_arm_handgun_reload_28.png</frame>
+	</frames>
+</sprite>

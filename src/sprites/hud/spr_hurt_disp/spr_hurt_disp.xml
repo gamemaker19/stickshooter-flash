@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>37</xorigin>
+	<yorigin>300</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>73</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>137</bbox_bottom>
+	<width>74</width>
+	<height>600</height>
+	<frames>
+		<frame index="0">spr_hurt_disp_0.png</frame>
+	</frames>
+</sprite>

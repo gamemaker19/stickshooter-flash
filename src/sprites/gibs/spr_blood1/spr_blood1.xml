@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>13</xorigin>
+	<yorigin>3</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>26</bbox_right>
+	<bbox_top>1</bbox_top>
+	<bbox_bottom>5</bbox_bottom>
+	<width>27</width>
+	<height>6</height>
+	<frames>
+		<frame index="0">spr_blood1_0.png</frame>
+	</frames>
+</sprite>

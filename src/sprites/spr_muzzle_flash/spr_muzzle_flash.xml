@@ -1,0 +1,18 @@
+<sprite>
+	<xorigin>31</xorigin>
+	<yorigin>30</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>60</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>59</bbox_bottom>
+	<width>62</width>
+	<height>60</height>
+	<frames>
+		<frame index="0">spr_muzzle_flash_0.png</frame>
+		<frame index="1">spr_muzzle_flash_1.png</frame>
+		<frame index="2">spr_muzzle_flash_2.png</frame>
+		<frame index="3">spr_muzzle_flash_3.png</frame>
+	</frames>
+</sprite>

@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>15</xorigin>
+	<yorigin>22</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>29</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>44</bbox_bottom>
+	<width>30</width>
+	<height>45</height>
+	<frames>
+		<frame index="0">spr_arm_jump_0.png</frame>
+	</frames>
+</sprite>

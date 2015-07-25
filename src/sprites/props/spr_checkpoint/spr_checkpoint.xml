@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>25</xorigin>
+	<yorigin>47</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>49</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>94</bbox_bottom>
+	<width>50</width>
+	<height>95</height>
+	<frames>
+		<frame index="0">spr_checkpoint_0.png</frame>
+	</frames>
+</sprite>

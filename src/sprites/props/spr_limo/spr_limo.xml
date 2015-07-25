@@ -1,0 +1,16 @@
+<sprite>
+	<xorigin>154</xorigin>
+	<yorigin>40</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>307</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>79</bbox_bottom>
+	<width>308</width>
+	<height>80</height>
+	<frames>
+		<frame index="0">spr_limo_0.png</frame>
+		<frame index="1">spr_limo_1.png</frame>
+	</frames>
+</sprite>

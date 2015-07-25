@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>20</xorigin>
+	<yorigin>37</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>58</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>73</bbox_bottom>
+	<width>59</width>
+	<height>74</height>
+	<frames>
+		<frame index="0">spr_jump_kick_0.png</frame>
+	</frames>
+</sprite>

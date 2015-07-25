@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>35</xorigin>
+	<yorigin>8</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>70</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>16</bbox_bottom>
+	<width>71</width>
+	<height>17</height>
+	<frames>
+		<frame index="0">spr_sniper_rifle_0.png</frame>
+	</frames>
+</sprite>

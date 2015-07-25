@@ -1,0 +1,20 @@
+<sprite>
+	<xorigin>52</xorigin>
+	<yorigin>45</yorigin>
+	<sepmasks>-1</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>103</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>89</bbox_bottom>
+	<width>104</width>
+	<height>90</height>
+	<frames>
+		<frame index="0">spr_player_dead_0.png</frame>
+		<frame index="1">spr_player_dead_1.png</frame>
+		<frame index="2">spr_player_dead_2.png</frame>
+		<frame index="3">spr_player_dead_3.png</frame>
+		<frame index="4">spr_player_dead_4.png</frame>
+		<frame index="5">spr_player_dead_5.png</frame>
+	</frames>
+</sprite>

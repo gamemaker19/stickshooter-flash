@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>0</xorigin>
+	<yorigin>148</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>6</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>147</bbox_bottom>
+	<width>7</width>
+	<height>148</height>
+	<frames>
+		<frame index="0">spr_big_elevator_door_0.png</frame>
+	</frames>
+</sprite>

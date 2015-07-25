@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>394</xorigin>
+	<yorigin>139</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>787</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>277</bbox_bottom>
+	<width>788</width>
+	<height>278</height>
+	<frames>
+		<frame index="0">spr_l1_10_0.png</frame>
+	</frames>
+</sprite>

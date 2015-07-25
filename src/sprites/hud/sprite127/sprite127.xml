@@ -1,0 +1,15 @@
+<sprite>
+	<xorigin>7</xorigin>
+	<yorigin>7</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>14</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>14</bbox_bottom>
+	<width>15</width>
+	<height>15</height>
+	<frames>
+		<frame index="0">sprite127_0.png</frame>
+	</frames>
+</sprite>
