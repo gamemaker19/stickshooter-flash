@@ -9,6 +9,7 @@
 	<bbox_bottom>11</bbox_bottom>
 	<width>10</width>
 	<height>12</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_grenade_0.png</frame>
 	</frames>

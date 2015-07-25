@@ -9,6 +9,7 @@
 	<bbox_bottom>84</bbox_bottom>
 	<width>104</width>
 	<height>90</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_mask_dead_0.png</frame>
 	</frames>

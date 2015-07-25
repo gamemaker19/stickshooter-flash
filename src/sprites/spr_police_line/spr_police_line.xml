@@ -9,6 +9,7 @@
 	<bbox_bottom>168</bbox_bottom>
 	<width>438</width>
 	<height>169</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_police_line_0.png</frame>
 	</frames>

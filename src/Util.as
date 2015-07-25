@@ -12,6 +12,7 @@ package
 	{
 		public static function is_obj(obj:Object, type:Class):Boolean
 		{
+			if (obj == null) return false;
 			return obj is Class(getDefinitionByName(getQualifiedClassName(obj)));
 		}
 		
@@ -148,6 +149,17 @@ package
 			if(angle < 0) angle += 360;
 			return (angle > 90 && angle < 180) || (angle > 270 && angle < 360);
 		}
+		
+		public static function angle_normal(angle:Number):Number
+		{
+			while(angle < 0) {
+				angle += 360;
+			}
+			angle = angle % 360;
+
+			return angle;
+		}
+		
 	}
 
 }

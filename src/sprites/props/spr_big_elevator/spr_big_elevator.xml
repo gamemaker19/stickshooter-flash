@@ -9,6 +9,7 @@
 	<bbox_bottom>225</bbox_bottom>
 	<width>208</width>
 	<height>226</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_big_elevator_0.png</frame>
 	</frames>

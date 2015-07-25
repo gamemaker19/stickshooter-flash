@@ -9,6 +9,7 @@
 	<bbox_bottom>110</bbox_bottom>
 	<width>8</width>
 	<height>111</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_door_hole_side_0.png</frame>
 	</frames>

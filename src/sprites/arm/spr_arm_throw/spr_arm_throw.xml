@@ -9,6 +9,7 @@
 	<bbox_bottom>73</bbox_bottom>
 	<width>88</width>
 	<height>104</height>
+	<num_frames>18</num_frames>
 	<frames>
 		<frame index="0">spr_arm_throw_0.png</frame>
 		<frame index="1">spr_arm_throw_1.png</frame>

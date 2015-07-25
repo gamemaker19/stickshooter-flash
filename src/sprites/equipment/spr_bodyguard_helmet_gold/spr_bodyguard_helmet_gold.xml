@@ -9,6 +9,7 @@
 	<bbox_bottom>21</bbox_bottom>
 	<width>18</width>
 	<height>22</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_bodyguard_helmet_gold_0.png</frame>
 	</frames>

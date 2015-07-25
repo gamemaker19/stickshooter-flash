@@ -9,6 +9,7 @@
 	<bbox_bottom>89</bbox_bottom>
 	<width>50</width>
 	<height>91</height>
+	<num_frames>4</num_frames>
 	<frames>
 		<frame index="0">spr_player_run_0.png</frame>
 		<frame index="1">spr_player_run_1.png</frame>

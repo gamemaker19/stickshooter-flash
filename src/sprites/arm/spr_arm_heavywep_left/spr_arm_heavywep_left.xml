@@ -9,6 +9,7 @@
 	<bbox_bottom>27</bbox_bottom>
 	<width>11</width>
 	<height>28</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_arm_heavywep_left_0.png</frame>
 	</frames>

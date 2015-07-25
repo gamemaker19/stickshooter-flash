@@ -9,6 +9,7 @@
 	<bbox_bottom>80</bbox_bottom>
 	<width>154</width>
 	<height>81</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_police_car_0.png</frame>
 	</frames>

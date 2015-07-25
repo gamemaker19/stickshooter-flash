@@ -9,6 +9,7 @@
 	<bbox_bottom>94</bbox_bottom>
 	<width>50</width>
 	<height>95</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_checkpoint_0.png</frame>
 	</frames>

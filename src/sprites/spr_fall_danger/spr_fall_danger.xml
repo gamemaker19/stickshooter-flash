@@ -9,6 +9,7 @@
 	<bbox_bottom>169</bbox_bottom>
 	<width>189</width>
 	<height>170</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_fall_danger_0.png</frame>
 	</frames>

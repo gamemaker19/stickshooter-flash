@@ -9,6 +9,7 @@
 	<bbox_bottom>31</bbox_bottom>
 	<width>32</width>
 	<height>32</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_wall_0.png</frame>
 	</frames>

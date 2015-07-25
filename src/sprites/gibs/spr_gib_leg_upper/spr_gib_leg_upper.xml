@@ -9,6 +9,7 @@
 	<bbox_bottom>23</bbox_bottom>
 	<width>2</width>
 	<height>24</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_gib_leg_upper_0.png</frame>
 	</frames>

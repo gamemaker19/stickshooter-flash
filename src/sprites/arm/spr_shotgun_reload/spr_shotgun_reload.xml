@@ -9,6 +9,7 @@
 	<bbox_bottom>13</bbox_bottom>
 	<width>38</width>
 	<height>14</height>
+	<num_frames>11</num_frames>
 	<frames>
 		<frame index="0">spr_shotgun_reload_0.png</frame>
 		<frame index="1">spr_shotgun_reload_1.png</frame>

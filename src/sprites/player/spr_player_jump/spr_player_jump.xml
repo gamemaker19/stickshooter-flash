@@ -9,6 +9,7 @@
 	<bbox_bottom>76</bbox_bottom>
 	<width>37</width>
 	<height>77</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_player_jump_0.png</frame>
 	</frames>

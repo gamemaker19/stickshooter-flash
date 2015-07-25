@@ -9,6 +9,7 @@
 	<bbox_bottom>19</bbox_bottom>
 	<width>20</width>
 	<height>20</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">sprite128_0.png</frame>
 	</frames>

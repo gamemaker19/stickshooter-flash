@@ -14,6 +14,7 @@ package
 		override public function init():void
 		{
 			trace("FlashPunk has started successfully!");
+			Sprites.set_sprites();
 		}
 	}
 }

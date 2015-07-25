@@ -9,6 +9,7 @@
 	<bbox_bottom>22</bbox_bottom>
 	<width>24</width>
 	<height>24</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_money_small_0.png</frame>
 	</frames>

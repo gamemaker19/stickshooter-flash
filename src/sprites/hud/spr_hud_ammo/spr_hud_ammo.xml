@@ -9,6 +9,7 @@
 	<bbox_bottom>9</bbox_bottom>
 	<width>10</width>
 	<height>10</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_hud_ammo_0.png</frame>
 	</frames>

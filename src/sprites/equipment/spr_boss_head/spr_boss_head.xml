@@ -9,6 +9,7 @@
 	<bbox_bottom>15</bbox_bottom>
 	<width>25</width>
 	<height>16</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_boss_head_0.png</frame>
 	</frames>

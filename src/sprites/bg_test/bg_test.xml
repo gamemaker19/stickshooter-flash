@@ -9,6 +9,7 @@
 	<bbox_bottom>1300</bbox_bottom>
 	<width>6377</width>
 	<height>1301</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">bg_test_0.png</frame>
 	</frames>

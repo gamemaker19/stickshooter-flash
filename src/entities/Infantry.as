@@ -5,17 +5,24 @@ package entities
 		//Pseudo-states
 		public var is_down:Boolean = false;    //Set to true if KO'd or dead
 		public var is_jumping:Boolean = false;
+		public var prev_jumping:Boolean = false;
 		public var is_crouching:Boolean = false;
+		public var prev_crouch:Boolean = false;
 		public var is_crawling:Boolean = false;
 		public var is_burning:Boolean = false;
 		public var is_wall_sliding:Boolean = false;
 		public var is_running:Boolean = false;
 		
 		//Jumping
-		public var prev_jumping:Boolean;
-		public var jump_boost_frames:int;
-		public var max_jump_boost_frames:int;
-		public var can_boost_jump:Boolean;
+		public var jump_boost_frames:int = 0;
+		public var max_jump_boost_frames:int = 7;
+		public var can_boost_jump:Boolean = false;
+		public var jump_speed:Number = 20;
+		public var jump_boost:Number = 2;
+		
+		public var run_speed:Number = 12;
+		public var walk_speed:Number = 6;
+		public var crouch_speed:Number = 2;
 		
 		/*
 		public var weapons:Vector.<Weapon>;
@@ -29,14 +36,14 @@ package entities
 		
 		}
 		
-		override public function update():void
+		public function can_jump():Boolean
 		{
-			super();
+			return true;
 		}
 		
 		override public function update():void
 		{
-			super();
+			super.update();
 		}
 		
 		override public function pre():void
@@ -45,20 +52,19 @@ package entities
 			move_y = 0;
 			
 			prev_jumping = is_jumping;
-			prev_crawl = is_crawling;
 			prev_crouch = is_crouching;
 			
 			if (is_grounded) {
 				is_jumping = false;
 			}
 			
-			super();
+			super.pre();
 		}
 		
 		override public function step():void
 		{
 			set_motion();
-			super();
+			super.step();
 		}
 		
 		private function set_motion():void
@@ -87,7 +93,7 @@ package entities
 				}
 			}
 			
-			if(trigger_jump_hold) {
+			if(ctl.trigger_jump_hold) {
 				if(is_jumping) {
 					if(!prev_jumping) {
 						can_boost_jump = true;

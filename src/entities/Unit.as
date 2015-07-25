@@ -13,12 +13,12 @@ package entities
 	 */
 	public class Unit extends Collider
 	{
-		public var alliance:int;
-		public var look_angle:Number;
-		public var hp:Number;
+		public var alliance:int = 0;
+		public var look_angle:Number = 0;
+		public var hp:Number = 200;
 		
-		public var move_x;
-		public var move_y;
+		public var move_x:Number = 0;
+		public var move_y:Number = 0;
 		
 		public var ctl:Controller;
 		//public var ai:AI;
@@ -27,27 +27,25 @@ package entities
 		
 		public function Unit() 
 		{
-			
+			ctl = new Controller();
 		}
 		
-		override public function update()
+		override public function update():void
 		{
 			ctl.update();	//Controls must be the first thing obtained if human player
-			pre();
-			step();
-			post();
+			super.update();
 		}
 		
 		//Change direction to look angle
 		public function normalize_look_angle():void
 		{
-			look_angle = angle_normal(look_angle);
+			look_angle = Util.angle_normal(look_angle);
 
 			if(look_angle > 90 && look_angle < 270) {
-				if(dir == 1) { look_angle = angle_normal(180 - look_angle); }
+				if(dir == 1) { look_angle = Util.angle_normal(180 - look_angle); }
 			}
 			else {
-				if(dir == -1) { look_angle = angle_normal(180 - look_angle); }
+				if(dir == -1) { look_angle = Util.angle_normal(180 - look_angle); }
 			}
 		}
 		

@@ -9,6 +9,7 @@
 	<bbox_bottom>137</bbox_bottom>
 	<width>74</width>
 	<height>600</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_hurt_disp_0.png</frame>
 	</frames>

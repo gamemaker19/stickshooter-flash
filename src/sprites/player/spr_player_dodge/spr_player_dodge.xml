@@ -9,6 +9,7 @@
 	<bbox_bottom>98</bbox_bottom>
 	<width>28</width>
 	<height>102</height>
+	<num_frames>14</num_frames>
 	<frames>
 		<frame index="0">spr_player_dodge_0.png</frame>
 		<frame index="1">spr_player_dodge_1.png</frame>

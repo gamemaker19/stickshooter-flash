@@ -9,6 +9,7 @@
 	<bbox_bottom>100</bbox_bottom>
 	<width>36</width>
 	<height>107</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_player_ladder_shoot_0.png</frame>
 	</frames>

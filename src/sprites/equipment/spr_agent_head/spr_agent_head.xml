@@ -9,6 +9,7 @@
 	<bbox_bottom>18</bbox_bottom>
 	<width>28</width>
 	<height>19</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_agent_head_0.png</frame>
 	</frames>

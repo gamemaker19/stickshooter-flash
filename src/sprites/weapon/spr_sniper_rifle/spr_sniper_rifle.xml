@@ -9,6 +9,7 @@
 	<bbox_bottom>16</bbox_bottom>
 	<width>71</width>
 	<height>17</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_sniper_rifle_0.png</frame>
 	</frames>

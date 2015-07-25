@@ -9,6 +9,7 @@
 	<bbox_bottom>35</bbox_bottom>
 	<width>20</width>
 	<height>36</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_arm_handsup_0.png</frame>
 	</frames>

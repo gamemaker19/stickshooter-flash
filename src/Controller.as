@@ -1,6 +1,7 @@
 package 
 {
 	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 	
 	public class Controller 
 	{
@@ -32,7 +33,7 @@ package
 			
 		}
 		
-		private function reset()
+		private function reset():void
 		{
 			trigger_up = false;
 			trigger_down = false;
@@ -58,13 +59,13 @@ package
 			trigger_weapon_3 = false;
 		}
 		
-		public function update()
+		public function update():void
 		{
 			reset();
 			get_input();
 		}
 		
-		private function get_input()
+		private function get_input():void
 		{
 			trigger_up = Input.check(Key.W);
 			trigger_down = Input.check(Key.S);
@@ -75,15 +76,15 @@ package
 			trigger_punch = Input.pressed(Key.F);
 			trigger_crouch = Input.check(Key.S);
 			trigger_zoom = Input.pressed(Key.Z);
-			trigger_fallthrough = Input.check(Key.LeftControl);
+			trigger_fallthrough = Input.check(Key.CONTROL);
 			trigger_jump_hold = Input.check(Key.W);
 			trigger_jump = Input.pressed(Key.W);
-			trigger_jump_release = keyboard_check_released(W);
-			trigger_run = Input.check(Key.LeftShift);
-			trigger_dodge = Input.pressed(Key.Space);
-			trigger_weapon_1 = Input.pressed(Key.One);
-			trigger_weapon_2 = Input.pressed(Key.Two);
-			trigger_weapon_3 = Input.pressed(Key.Three);
+			trigger_jump_release = Input.released(Key.W);
+			trigger_run = Input.check(Key.SHIFT);
+			trigger_dodge = Input.pressed(Key.SPACE);
+			trigger_weapon_1 = Input.pressed(Key.NUMPAD_0);
+			trigger_weapon_2 = Input.pressed(Key.NUMPAD_1);
+			trigger_weapon_3 = Input.pressed(Key.NUMPAD_2);
 		}
 	}
 

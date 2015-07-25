@@ -9,6 +9,7 @@
 	<bbox_bottom>91</bbox_bottom>
 	<width>20</width>
 	<height>92</height>
+	<num_frames>1</num_frames>
 	<frames>
 		<frame index="0">spr_player_idle_0.png</frame>
 	</frames>

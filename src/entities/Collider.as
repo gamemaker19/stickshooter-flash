@@ -1,24 +1,24 @@
 package entities 
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Spritemap;
 	
 	public class Collider extends Entity
 	{
-		public var vel_x:Number;
-		public var vel_y:Number;
+		public var vel_x:Number = 0;
+		public var vel_y:Number = 0;
 		
 		public var is_grounded:Boolean = false;
 		public var grounded_obj:Object;
 		public var is_solid:Boolean = true;
 		public var is_solid_collider:Boolean = true;
 		
-		public var num_bounces:int;
+		public var num_bounces:int = 0;
 		
 		public var dir:int = 1;	//-1 = left, 1 = right
-		public var alliance:int;
 		
-		public var bounciness:Number;	//0 is none, 1 is objects bounce their height, 2 is objects bounce double their height, etc.
-		public var friction:Number; 	//1 is none, 0 is objects stop immediately
+		public var bounciness:Number = 0;	//0 is none, 1 is objects bounce their height, 2 is objects bounce double their height, etc.
+		public var friction:Number = 0; 	//1 is none, 0 is objects stop immediately
 		
 		public function Collider()
 		{
@@ -93,7 +93,7 @@ package entities
 			return true;
 		}
 		
-		public function pre()
+		public function pre():void
 		{
 			is_grounded = false;
 			grounded_obj = null;
@@ -127,12 +127,18 @@ package entities
 			}
 		}
 		
-		public function step()
+		public function step():void
 		{
 			
 		}
 		
-		public function post()
+		public function draw():void
+		{
+			if(graphic != null)
+				(graphic as Spritemap).play("1");
+		}
+		
+		public function post():void
 		{
 			var times:int = 0;
 			var net_vel_x:Number = vel_x + get_move_x();
@@ -207,7 +213,7 @@ package entities
 						
 						var col_x:Collider = hit_x as Collider;
 
-						if(Util.is_obj(col_x,Unit) && Util.is_obj(this,Unit) && alliance == (col_x as Unit).alliance) {
+						if(Util.is_obj(col_x,Unit) && Util.is_obj(this,Unit) && (this as Unit).alliance == (col_x as Unit).alliance) {
 
 						}
 						else if (net_vel_x != 0) {
@@ -283,7 +289,7 @@ package entities
 						var col_y:Collider = hit_y as Collider;
 
 						//Soft collide with allies
-						if(Util.is_obj(this,Unit) && Util.is_obj(col_y,Unit) && alliance == col_y.alliance) {
+						if(Util.is_obj(this,Unit) && Util.is_obj(col_y,Unit) && (this as Unit).alliance == (col_y as Unit).alliance) {
 							
 						}
 						else {
@@ -440,9 +446,10 @@ package entities
 		
 		override public function update():void
 		{
-			collider_pre();
-			collider_step();
-			collider_post();
+			pre();
+			step();
+			post();
+			draw();
 		}
 	}
 

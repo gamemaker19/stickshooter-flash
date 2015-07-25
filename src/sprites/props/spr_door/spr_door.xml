@@ -9,6 +9,7 @@
 	<bbox_bottom>96</bbox_bottom>
 	<width>130</width>
 	<height>97</height>
+	<num_frames>2</num_frames>
 	<frames>
 		<frame index="0">spr_door_0.png</frame>
 		<frame index="1">spr_door_1.png</frame>
