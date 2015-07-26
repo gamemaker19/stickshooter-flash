@@ -37,12 +37,20 @@ package entities
 		
 		public var arms:Arms;
 		
-		public function get head_x():Number { return x; }
-		public function get head_y():Number { return y - 35; }
-		public function get arm_x():Number { return x; }
-		public function get arm_y():Number { return y - 27; }
-		public function get foot_x():Number { return x; }
-		public function get foot_y():Number { return y + 35; }
+		private var _head_x:Number;
+		private var _head_y:Number;
+		private var _arm_x:Number;
+		private var _arm_y:Number;
+		private var _foot_x:Number;
+		private var _foot_y:Number;
+		public var body_angle:Number;
+		
+		public function get head_x():Number { return centerX + dir*_head_x; }
+		public function get head_y():Number { return centerY + _head_y; }
+		public function get arm_x():Number { return centerX + dir*_arm_x; }
+		public function get arm_y():Number { return centerY + _arm_y; }
+		public function get foot_x():Number { return centerX + dir*_foot_x; }
+		public function get foot_y():Number { return centerY + _foot_y; }
 
 		/*
 		public var weapons:Vector.<Weapon>;
@@ -53,6 +61,66 @@ package entities
 		
 		public function Infantry() 
 		{
+			
+		}
+		
+		public function set_areas():void
+		{
+			if(is_grounded) {
+				if(is_crawling) {
+					_head_x = 37;
+					_head_y = 34;
+					_arm_x = 25;
+					_arm_y = 40;
+					body_angle = -90;
+					_foot_x = -44;
+					_foot_y = 44;
+				}
+				else if(is_crouching) {
+					_head_x = 11;
+					_head_y = -5;
+					_arm_x = 7;
+					_arm_y = 3;
+					body_angle = -20;
+					_foot_x = 0;
+					_foot_y = 42;
+				}
+				else {
+					_head_x = 0;
+					_head_y = -38;
+					_arm_x = 0;
+					_arm_y = -29;
+					body_angle = 0;
+					_foot_x = 0;
+					_foot_y = 35;
+				}
+			}
+			else {
+
+				if(is_jumping) {
+					_head_x = 0;
+					_head_y = -32;
+					_arm_x = 0;
+					_arm_y = -24;
+					_foot_x = 0;
+					_foot_y = 35;
+					body_angle = 0;
+				}
+				else {
+					_head_x = -2;
+					_head_y = -30;
+					_arm_x = -2;
+					_arm_y = -22;
+					_foot_x = 0;
+					_foot_y = 35;
+					body_angle = 0;
+				}
+			}
+		}
+		
+		public override function added():void
+		{
+			super.added();
 			arms = new Arms();
 			FP.world.add(arms);
 			children.push(arms);
@@ -123,6 +191,8 @@ package entities
 			if (is_grounded) {
 				is_jumping = false;
 			}
+			
+			set_areas();
 			
 			super.pre();
 		}

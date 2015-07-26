@@ -49,6 +49,7 @@ package entities
 			var ihost:Infantry = host as Infantry;
 			x = ihost.arm_x;
 			y = ihost.arm_y;
+			dir = ihost.dir;
 		}
 		
 	}

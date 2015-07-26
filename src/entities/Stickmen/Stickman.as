@@ -20,8 +20,8 @@ package entities.Stickmen
 			crouch_sprite = Sprites.player_crouch;
 			
 			const_hitbox = true;
-			const_hitbox_x = 0;
-			const_hitbox_y = 0;
+			const_hitbox_x = 10;
+			const_hitbox_y = 45;
 			const_hitbox_w = 20;
 			const_hitbox_h = 90;
 		}

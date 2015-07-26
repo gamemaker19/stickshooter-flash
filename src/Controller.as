@@ -34,8 +34,6 @@ package
 		
 		public function Controller() 
 		{
-			cursor = new Cursor();
-			FP.world.add(cursor);
 		}
 		
 		private function reset():void
@@ -66,6 +64,11 @@ package
 		
 		public function update():void
 		{
+			if (cursor == null)
+			{
+				cursor = new Cursor();
+				FP.world.add(cursor);
+			}
 			reset();
 			get_input();
 		}

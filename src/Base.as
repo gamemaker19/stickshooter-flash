@@ -28,22 +28,36 @@ package
 			if(graphic != graphic_dict[value]) { graphic = graphic_dict[value]; }
 			
 			var sm:Spritemap = (graphic as Spritemap);
+				
+			var img:Image = graphic as Image;
 			
-			(graphic as Image).scaleX = xscale;
-			(graphic as Image).scaleY = yscale;
-			(graphic as Image).angle = angle;
+			img.scaleX = xscale;
+			img.scaleY = yscale;
+			img.angle = angle;
+			img.originX = value.xorigin;
+			img.originY = value.yorigin;
 			
 			setOrigin(value.xorigin * xscale, value.yorigin * yscale);
-			if (dir == -1) { (graphic as Image).flipped = true; }
-			else { (graphic as Image).flipped = false; }
+			if (dir == -1) { img.scaleX = -Math.abs(img.scaleX); }
+			else { img.scaleX = Math.abs(img.scaleX); }
 			
 			if (!const_hitbox)
 			{
-				setHitbox((value.bbox_right - value.bbox_left) * xscale, (value.bbox_bottom - value.bbox_top) * yscale, value.bbox_left * xscale, value.bbox_top * yscale);
+				setHitbox(
+					(value.bbox_right - value.bbox_left) * xscale, 
+					(value.bbox_bottom - value.bbox_top) * yscale, 
+					(value.bbox_left + value.xorigin) * xscale,
+					(value.bbox_top + value.yorigin) * yscale
+				);
 			}
 			else
 			{
-				setHitbox(const_hitbox_w * xscale,const_hitbox_h * yscale,const_hitbox_x * xscale,const_hitbox_y * yscale);
+				setHitbox(
+					const_hitbox_w * xscale,
+					const_hitbox_h * yscale,
+					const_hitbox_x * xscale,
+					const_hitbox_y * yscale
+				);
 			}
 			
 			sm.rate = rate;
@@ -53,7 +67,7 @@ package
 		override public function render():void 
 		{
 			super.render();
-			Draw.hitbox(this,true);
+			//Draw.hitbox(this,true);
 		}
 		
 		public function is_above_platform(wall:Wall):Boolean
