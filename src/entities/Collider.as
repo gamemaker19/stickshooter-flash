@@ -3,7 +3,7 @@ package entities
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Spritemap;
 	
-	public class Collider extends Entity
+	public class Collider extends Base
 	{
 		public var vel_x:Number = 0;
 		public var vel_y:Number = 0;
@@ -15,19 +15,12 @@ package entities
 		
 		public var num_bounces:int = 0;
 		
-		public var dir:int = 1;	//-1 = left, 1 = right
-		
 		public var bounciness:Number = 0;	//0 is none, 1 is objects bounce their height, 2 is objects bounce double their height, etc.
 		public var friction:Number = 0; 	//1 is none, 0 is objects stop immediately
 		
 		public function Collider()
 		{
-			
-		}
-		
-		public function is_above_platform(wall:Wall):Boolean
-		{
-			return false;
+			type = "Collider";
 		}
 		
 		private function get_next_x(net_vel_x:Number):Number
@@ -78,12 +71,12 @@ package entities
 			}
 		}
 		
-		private function get_move_x():Number
+		protected function get_move_x():Number
 		{
 			return 0;
 		}
 		
-		private function get_move_y():Number
+		protected function get_move_y():Number
 		{
 			return 0;
 		}
@@ -100,9 +93,10 @@ package entities
 			
 			if(vel_y >= 0) {
 				
-				var ehit:Entity = this.world.collideLine("Entity", left, bottom, right, bottom);
+				var ehit:Entity = this.world.collideLine("Wall", left, bottom, right, bottom);
+				if (ehit == null) { ehit = this.world.collideLine("Collider", left, bottom, right, bottom); }
 				
-				if (Util.is_obj(ehit,Wall))
+				if (is_obj(ehit,Wall))
 				{
 					var wall:Wall = ehit as Wall;
 					if (wall.is_platform || Util.is_above_platform(this, wall))
@@ -114,7 +108,7 @@ package entities
 						}
 					}
 				}
-				else if (Util.is_obj(ehit, Collider))
+				else if (is_obj(ehit, Collider))
 				{
 					var col:Collider = ehit as Collider;
 					if (is_solid_collider && is_solid && col.is_solid && col.is_solid_collider)
@@ -130,12 +124,6 @@ package entities
 		public function step():void
 		{
 			
-		}
-		
-		public function draw():void
-		{
-			if(graphic != null)
-				(graphic as Spritemap).play("1");
 		}
 		
 		public function post():void
@@ -155,13 +143,13 @@ package entities
 			if(Math.abs(net_vel_x) > 0) {
 
 				var hit_xs:Array = new Array();
-				collideTypesInto([Wall, Collider], get_dest_x(net_vel_x), y, hit_xs);
+				collideTypesInto(["Wall", "Collider"], get_dest_x(net_vel_x), y, hit_xs);
 				
-				for (var hit_x:Object in hit_xs)
+				for each(var hit_x:Object in hit_xs)
 				{
 					if(net_vel_x == 0) continue;
 
-					if(Util.is_obj(wall_x,Wall)) {
+					if(is_obj(hit_x,Wall)) {
 
 						var wall_x:Wall = hit_x as Wall;
 
@@ -209,11 +197,11 @@ package entities
 						}
 
 					}
-					else if(is_solid_collider && Util.is_obj(hit_x,Collider) && hit_x.is_solid_collider) {
+					else if(is_solid_collider && is_obj(hit_x,Collider) && hit_x.is_solid_collider) {
 						
 						var col_x:Collider = hit_x as Collider;
 
-						if(Util.is_obj(col_x,Unit) && Util.is_obj(this,Unit) && (this as Unit).alliance == (col_x as Unit).alliance) {
+						if(is_obj(col_x,Unit) && is_a(Unit) && (this as Unit).alliance == (col_x as Unit).alliance) {
 
 						}
 						else if (net_vel_x != 0) {
@@ -242,11 +230,11 @@ package entities
 			if(Math.abs(net_vel_y) > 0 || Math.abs(orig_net_vel_x) > 0) {
 				
 				var hit_ys:Array = new Array();
-				collideTypesInto([Collider, Wall], x, get_dest_y(net_vel_y), hit_ys);
+				collideTypesInto(["Collider", "Wall"], x, get_dest_y(net_vel_y), hit_ys);
 				
-				for (var hit_y:Object in hit_ys) {
-
-					if(Util.is_obj(hit_y,Wall)) {
+				for each(var hit_y:Object in hit_ys) {
+					
+					if(is_obj(hit_y,Wall)) {
 						
 						var wall_y:Wall = hit_y as Wall;
 
@@ -284,12 +272,12 @@ package entities
 
 						}
 					}
-					else if(Util.is_obj(hit_y,Collider) && is_solid_collider && hit_y.is_solid_collider) {
+					else if(is_obj(hit_y,Collider) && is_solid_collider && hit_y.is_solid_collider) {
 						
 						var col_y:Collider = hit_y as Collider;
 
 						//Soft collide with allies
-						if(Util.is_obj(this,Unit) && Util.is_obj(col_y,Unit) && (this as Unit).alliance == (col_y as Unit).alliance) {
+						if(is_a(Unit) && is_obj(col_y,Unit) && (this as Unit).alliance == (col_y as Unit).alliance) {
 							
 						}
 						else {
@@ -449,7 +437,6 @@ package entities
 			pre();
 			step();
 			post();
-			draw();
 		}
 	}
 

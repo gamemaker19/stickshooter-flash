@@ -35,9 +35,6 @@
       <path-element>C:\Users\username\Desktop\Everything\Game Projects\StickShooter Flash\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
-    <library-path append="true">
-      <path-element>C:\Users\username\Desktop\Everything\Game Projects\StickShooter Flash\lib\FlashPunk.swc</path-element>
-    </library-path>
   </compiler>
   <file-specs>
     <path-element>C:\Users\username\Desktop\Everything\Game Projects\StickShooter Flash\src\Main.as</path-element>

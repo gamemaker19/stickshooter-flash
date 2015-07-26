@@ -20,7 +20,7 @@ def get_flash_code_1(basename, path):
 	code = \
 	'\t\t[Embed(source = "<SPRPATH>")] private static const <SPRVARNAMECAPS>:Class;\n' + \
 	'\t\t[Embed(source = "<XMLPATH>", mimeType = "application/octet-stream")] public static const <SPRVARNAMECAPS>_XML:Class;\n' + \
-	'\t\tpublic static var <SPRVARNAME>:Spritemap;\n'
+	'\t\tpublic static var <SPRVARNAME>:SpriteData;\n'
 	path = path[:-6]
 	sprpath = "sprites/" + path.replace(flash_spr_path,"") + ".png"
 	xmlpath = sprpath[:-4] + ".xml"
@@ -31,7 +31,7 @@ def get_flash_code_1(basename, path):
 	return code
 
 def get_flash_code_2(basename):
-	code = "\t\t\t<VAL> = set_sprite(SPR_PLAYER_IDLE_XML, <SPR>);"
+	code = "\t\t\t<VAL> = new SpriteData(SPR_PLAYER_IDLE_XML, <SPR>);"
 	code = code.replace("SPR_PLAYER_IDLE",basename.upper())
 	code = code.replace("<SPR>",basename.upper())
 	code = code.replace("<VAL>","Sprites." + basename.replace("spr_",""))

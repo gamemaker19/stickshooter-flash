@@ -1,5 +1,8 @@
 package entities 
 {
+	import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.Mask;
+	import net.flashpunk.masks.Grid;
 	public class Infantry extends Unit
 	{
 		//Pseudo-states
@@ -24,6 +27,13 @@ package entities
 		public var walk_speed:Number = 6;
 		public var crouch_speed:Number = 2;
 		
+		public var idle_sprite:SpriteData;
+		public var walk_sprite:SpriteData;
+		public var run_sprite:SpriteData;
+		public var jump_sprite:SpriteData;
+		public var fall_sprite:SpriteData;
+		public var crouch_sprite:SpriteData;
+		
 		/*
 		public var weapons:Vector.<Weapon>;
 		public int weapon_index;
@@ -33,7 +43,7 @@ package entities
 		
 		public function Infantry() 
 		{
-		
+			
 		}
 		
 		public function can_jump():Boolean
@@ -44,6 +54,42 @@ package entities
 		override public function update():void
 		{
 			super.update();
+		}
+		
+		override public function change_sprite():void
+		{
+			if (is_grounded) {
+				
+				if(is_crouching) {
+					set_sprite(crouch_sprite, 0.45);
+				}
+				else {
+					if (move_x == 0) {
+						set_sprite(idle_sprite);
+					}
+					else if(is_running) {
+						set_sprite(run_sprite, 0.5);
+					}
+					else {
+						set_sprite(walk_sprite, 0.5);
+					}
+				}
+
+				if(move_x == 0) {
+					(graphic as Spritemap).frame = 0;
+					(graphic as Spritemap).rate = 0;
+				}
+
+			}
+			else {
+
+				if(is_jumping) {
+					set_sprite(jump_sprite);
+				}
+				else {
+					set_sprite(fall_sprite);
+				}
+			}
 		}
 		
 		override public function pre():void
@@ -64,13 +110,24 @@ package entities
 		override public function step():void
 		{
 			set_motion();
+			change_sprite();
 			super.step();
+		}
+		
+		override protected function get_move_x():Number
+		{
+			return move_x;
+		}
+		
+		override protected function get_move_y():Number
+		{
+			return move_y;
 		}
 		
 		private function set_motion():void
 		{
 			//Movement section
-			move_x = ctl.trigger_left + ctl.trigger_right;
+			move_x = -(ctl.trigger_left ? 1 : 0) + (ctl.trigger_right ? 1 : 0);
 			is_running = ctl.trigger_run;
 			is_crouching = ctl.trigger_crouch;
 			
