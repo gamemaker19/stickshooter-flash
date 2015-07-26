@@ -1,5 +1,6 @@
 package entities.Stickmen 
 {
+	import entities.Arms;
 	import net.flashpunk.Entity;
 	import entities.Infantry;
 	import net.flashpunk.graphics.Graphiclist;

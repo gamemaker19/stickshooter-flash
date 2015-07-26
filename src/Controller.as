@@ -1,7 +1,9 @@
 package 
 {
+	import entities.Cursor;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.FP;
 	
 	public class Controller 
 	{
@@ -28,9 +30,12 @@ package
 		public var trigger_weapon_2:Boolean = false;
 		public var trigger_weapon_3:Boolean = false;
 
+		public var cursor:Cursor;
+		
 		public function Controller() 
 		{
-			
+			cursor = new Cursor();
+			FP.world.add(cursor);
 		}
 		
 		private function reset():void

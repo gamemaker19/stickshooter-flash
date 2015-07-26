@@ -3,6 +3,7 @@ package entities
 	import net.flashpunk.graphics.Spritemap;
 	import net.flashpunk.Mask;
 	import net.flashpunk.masks.Grid;
+	import net.flashpunk.FP;
 	public class Infantry extends Unit
 	{
 		//Pseudo-states
@@ -34,6 +35,15 @@ package entities
 		public var fall_sprite:SpriteData;
 		public var crouch_sprite:SpriteData;
 		
+		public var arms:Arms;
+		
+		public function get head_x():Number { return x; }
+		public function get head_y():Number { return y - 35; }
+		public function get arm_x():Number { return x; }
+		public function get arm_y():Number { return y - 27; }
+		public function get foot_x():Number { return x; }
+		public function get foot_y():Number { return y + 35; }
+
 		/*
 		public var weapons:Vector.<Weapon>;
 		public int weapon_index;
@@ -43,7 +53,9 @@ package entities
 		
 		public function Infantry() 
 		{
-			
+			arms = new Arms();
+			FP.world.add(arms);
+			children.push(arms);
 		}
 		
 		public function can_jump():Boolean
@@ -62,22 +74,28 @@ package entities
 				
 				if(is_crouching) {
 					set_sprite(crouch_sprite, 0.45);
+					arms.to_crouch();
 				}
 				else {
 					if (move_x == 0) {
 						set_sprite(idle_sprite);
+						arms.to_idle();
 					}
 					else if(is_running) {
 						set_sprite(run_sprite, 0.5);
+						arms.to_run();
 					}
 					else {
 						set_sprite(walk_sprite, 0.5);
+						arms.to_walk();
 					}
 				}
 
 				if(move_x == 0) {
 					(graphic as Spritemap).frame = 0;
 					(graphic as Spritemap).rate = 0;
+					(arms.graphic as Spritemap).frame = 0;
+					(arms.graphic as Spritemap).rate = 0;
 				}
 
 			}
@@ -85,9 +103,11 @@ package entities
 
 				if(is_jumping) {
 					set_sprite(jump_sprite);
+					arms.to_jump();
 				}
 				else {
 					set_sprite(fall_sprite);
+					arms.to_fall();
 				}
 			}
 		}

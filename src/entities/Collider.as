@@ -1,5 +1,6 @@
 package entities 
 {
+	import IChild;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Spritemap;
 	
@@ -306,7 +307,13 @@ package entities
 				y += net_vel_y;
 
 			}
-
+	
+			//Go thru all colliders, update their positions
+			for each(var child:IChild in children)
+			{
+				child.update_position(this);
+			}
+			
 			//This section frees objects stuck in walls. It's commented out due to performance concerns.
 			/*
 			if(is_solid && is_solid_collider) {

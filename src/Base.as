@@ -11,9 +11,12 @@ package
 	{
 		//var sprite:SpriteData;
 		
+		public var children:Vector.<IChild>;
+		
 		public function Base()
 		{
 			super();
+			children = new Vector.<IChild>();
 		}
 		
 		public function set_sprite(value:SpriteData, rate:Number = 1):void
@@ -50,7 +53,7 @@ package
 		override public function render():void 
 		{
 			super.render();
-			//Draw.hitbox(this,false);
+			Draw.hitbox(this,true);
 		}
 		
 		public function is_above_platform(wall:Wall):Boolean
