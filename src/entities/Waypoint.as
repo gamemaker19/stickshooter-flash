@@ -8,13 +8,17 @@ package entities
 	 * ...
 	 * @author 
 	 */
-	public class Waypoint extends Entity 
+	public class Waypoint extends Base 
 	{
-		
-		public function Waypoint(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null) 
+		public var neighbors:Array = [];
+		public var neighbor_to_jp:Dictionary = new Dictionary();	//Maps a neighbor to its connecting jump point
+		public var neighbor_to_dp:Dictionary = new Dictionary();	//Maps a neighbor to its connecting jump point
+		public var dest_to_neighbor:Dictionary = new Dictionary();	//Maps a destination to best neighbor
+
+		public function Waypoint() 
 		{
-			super(x, y, graphic, mask);
-			
+			super();
+			type = "Waypoint";
 		}
 		
 	}

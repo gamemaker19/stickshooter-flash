@@ -8,13 +8,13 @@ package entities
 	 * ...
 	 * @author 
 	 */
-	public class JumpPoint extends Entity 
+	public class JumpPoint extends WaypointLink 
 	{
 		
-		public function JumpPoint(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null) 
+		public function JumpPoint() 
 		{
-			super(x, y, graphic, mask);
-			
+			super();
+			type = "JumpPoint";
 		}
 		
 	}

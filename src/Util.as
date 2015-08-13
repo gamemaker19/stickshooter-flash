@@ -10,6 +10,13 @@ package
 	
 	public class Util 
 	{
+		public static function get_entities(obj:Object):Array
+		{
+			var retList:Array = [];
+			world.getClass(obj, retList);
+			return retList;
+		}
+
 		public static function is_obj(obj:Object, type:Class):Boolean
 		{
 			if (obj == null) return false;

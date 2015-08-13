@@ -8,6 +8,7 @@ package
 		{
 			return host.ctl;
 		}
+		public var squad:Squad;
 
 		//AI Enums
 		public static var STAY_AT_WAYPOINT:int = 0;
@@ -128,6 +129,16 @@ package
 			
 		}
 		
+		public function ai_change_dir():void
+		{
+
+		}
+
+		public function get_jump_point():void
+		{
+
+		}
+
 		//Attempt to get a target
 		public function get_target(asight_range:int):Base
 		{
@@ -147,9 +158,102 @@ package
 		}
 		
 		//Gets the nearest adjacent waypoint to the target.
-		public function get_nearest_neighbor(target:Base):void
+		public function get_nearest_neighbor(target:Base):Waypoint
 		{
 			
+		}
+
+		//Gets the closest waypoint to the given x and y position
+		public function get_closest_waypoint(x:int, y:int):Waypoint
+		{
+
+		}
+
+		public function move_to_best_neighbor()
+		{
+			best_neighbor = waypoint.dest_to_neighbor[dest_waypoint];
+
+      //No best neighbor: complain
+      if(best_neighbor === undefined) {
+          //alert("No best neighbor. Current waypoint is isolated.");
+      }
+      else {
+          //print(best_neighbor.name)
+      }
+
+      var jp = waypoint.neighbor_to_jp[best_neighbor];
+      var dp = waypoint.neighbor_to_dp[best_neighbor];
+
+      //If best neighbor is connected by a drop point and it's below: move to drop point and drop on it
+      if(dp !== undefined && best_neighbor.y > waypoint.y) {
+
+          if(x < dp.x) { ctl.trigger_right = true; }
+          else if(x > dp.x) { ctl.trigger_left = true; }
+
+          /*
+          //If it's a ladder drop point
+          if(dp.is_ladder_dp) {
+              ctl.trigger_down = true;
+              ladder = instance_place(x,y,obj_ladder);    
+              if(ladder != null) {
+                  ladder_dir = 1;
+                  return 0;
+              }
+          }
+          */
+
+          if(is_grounded && dp == instance_place(x,y,obj_drop_point)) {
+              ctl.trigger_fallthrough = true;
+              is_grounded = false;
+          }
+
+      }
+      //If best neighbor is connected by a jump point, move to the jump point
+      else if(jp !== undefined) {
+
+          if(x < jp.jump_start_x) { ctl.trigger_right = true; }
+          else if(x > jp.jump_start_x) { ctl.trigger_left = true; }
+
+          //If at this point we reach the jump point, have the ai jump
+          if(is_grounded && jp == collide("JumpPoint",x,y) && Math.abs(x - jp.jump_start_x) < 15) {
+              x = jp.jump_start_x;
+
+              //If it's a ladder jump point
+              /*
+              if(jp.is_ladder_jp) {
+                  ctl.trigger_up = true;
+                  ladder = instance_place(x,y,obj_ladder);    
+                  if(ladder != null) {
+                      //alert("jumping up to ladder")
+                      y--;
+                      ladder_dir = -1;
+                      return 0;
+                  }
+              }
+              */
+
+              if(jp.dir != dir) {
+                  ai_change_dir();
+              }
+              
+              var jxy = get_jump_vels(jp);
+              ai_jump_vel_x = jxy[0];
+              vel_y = jxy[1];
+              is_jumping = true;
+              can_boost_jump = false;
+              is_grounded = false;
+              jump_point = jp;
+              ctl.trigger_left = false;
+              ctl.trigger_right = false;
+          }
+      }
+      //Otherwise just move to the waypoint normally
+      else {        
+          if(waypoint != null && best_neighbor != null) {
+              if(waypoint.x < best_neighbor.x) { ctl.trigger_right = true; }
+              else if(waypoint.x > best_neighbor.x) { ctl.trigger_left = true; }
+          }
+      }
 		}
 		
 	}

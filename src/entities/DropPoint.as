@@ -8,13 +8,13 @@ package entities
 	 * ...
 	 * @author 
 	 */
-	public class DropPoint extends Entity 
+	public class DropPoint extends WaypointLink 
 	{
 		
-		public function DropPoint(x:Number=0, y:Number=0, graphic:Graphic=null, mask:Mask=null) 
+		public function DropPoint() 
 		{
-			super(x, y, graphic, mask);
-			
+			super();
+			type = "DropPoint";
 		}
 		
 	}

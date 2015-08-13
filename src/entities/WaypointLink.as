@@ -1,11 +1,11 @@
 package entities 
 {
-	import net.flashpunk.Entity;
-	public class WaypointLink extends Entity
+	public class WaypointLink extends Base
 	{
 		public function WaypointLink() 
 		{
-			
+			super();
+			type = "WaypointLink";			
 		}
 	}
 

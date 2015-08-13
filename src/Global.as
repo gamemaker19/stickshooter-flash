@@ -8,6 +8,8 @@ package
 
 	public class Global
 	{
+		
+
 		public function should_draw_arms(infantry:Infantry)
 		{
 			

@@ -83,6 +83,15 @@ package
 			        }
 			        ds_list_destroy(nearby_enemies);
 			        */
+
+			        is_alerted = true;
+
+			        if(!squad.in_combat)
+			        {
+			        	squad.in_combat = true;
+			        	state = POINT;	
+			        }
+
 			        last_target = target;
 			    }
 
@@ -91,7 +100,6 @@ package
 
 			    if(target.is_down) {
 			        target = null;
-			        //squad.has_disturbance = false;
 			    }
 
 			    else {
@@ -105,12 +113,6 @@ package
 
 			}
 
-			if(target != null) {
-			    //with(squad) { 
-			    //    set_disturbance(other.target.x,other.target.y);
-			    //}
-			    is_alerted = true;
-			}
 			if(cur_waypoint == null && idle_behavior == IB_PATROL) idle_behavior = IB_STILL;
 
 			ctl.trigger_right = false;
@@ -281,9 +283,11 @@ package
 			        ai_state = AIS_STAY_AT_WAYPOINT;
 			    }
 
-			    if(is_grounded) {
-			        jump_point = null;
-			        ai_jump_vel_x = 0;
+			    jump_point = get_jump_point();
+
+			    if(jump_point != null)
+			    {
+			    	return;
 			    }
 
 			    /*
@@ -303,120 +307,36 @@ package
 			    }
 			    */
 
-			    if(jump_point == null) {
+	        dest_waypoint = collide("Waypoint",dest_x,dest_y);
+	        if(dest_waypoint == null) {
+	            dest_waypoint = get_closest_waypoint(dest_x,dest_y);
+	        }
 
-			        dest_waypoint = instance_position(dest_x,dest_y,obj_waypoint);
-			        if(dest_waypoint == null) {
-			            dest_waypoint = get_closest_waypoint(dest_x,dest_y);
-			        }
+	        //If we are on the destination waypoint, just move to the target
+	        if(waypoint == dest_waypoint) {
+	            if(x < dest_x) { ctl.trigger_right = true; }
+	            else if(x > dest_x) { ctl.trigger_left = true; }
+	            if(Math.abs(x-dest_x) < 5) {
+	                ctl.trigger_left = false;
+	                ctl.trigger_right = false;
+	                x = dest_x;
 
-			        //If we are on the destination waypoint, just move to the target
-			        if(waypoint == dest_waypoint) {
-			            if(x < dest_x) { ctl.trigger_right = true; }
-			            else if(x > dest_x) { ctl.trigger_left = true; }
-			            if(Math.abs(x-dest_x) < 5) {
-			                ctl.trigger_left = false;
-			                ctl.trigger_right = false;
-			                x = dest_x;
+	                //At this point, be confused, and ready to switch to stay-at-waypoint mode
+	                
+	                if(!is_following_player && is_investigator) {
+	                    confuse_time = FP.elapsed;
+	                    ai_state = AIS_ARRIVE_CONFUSED;
+	                    is_investigator = false;
+	                    squad.clear_disturbance();
+	                }
 
-			                //At this point, be confused, and ready to switch to stay-at-waypoint mode
-			                
-			                if(!is_following_player && is_investigator) {
-			                    confuse_time = FP.elapsed;
-			                    ai_state = AIS_ARRIVE_CONFUSED;
-			                    is_investigator = false;
-			                    squad.has_disturbance = false;
-			                }
+	            }
+	        }
 
-			            }
-			        }
-
-			        //Otherwise, find the closest nearest waypoint
-			        else if(waypoint != null) {
-
-			            best_neighbor = ds_map_find_value(waypoint.dest_to_neighbor,dest_waypoint);
-
-			            //No best neighbor: complain
-			            if(best_neighbor == null) {
-			                //alert("No best neighbor. Current waypoint is isolated.");
-			            }
-			            else {
-			                //print(best_neighbor.name)
-			            }
-
-			            var jp = ds_map_find_value(waypoint.neighbor_to_jp,best_neighbor);
-			            var dp = ds_map_find_value(waypoint.neighbor_to_dp,best_neighbor);
-
-			            //If best neighbor is connected by a drop point and it's below: move to drop point and drop on it
-			            if(!is_undefined(dp) && best_neighbor.y > waypoint.y) {
-
-			                if(x < dp.x) { ctl.trigger_right = true; }
-			                else if(x > dp.x) { ctl.trigger_left = true; }
-
-			                //If it's a ladder drop point
-			                if(dp.is_ladder_dp) {
-			                    ctl.trigger_down = true;
-			                    ladder = instance_place(x,y,obj_ladder);    
-			                    if(ladder != null) {
-			                        ladder_dir = 1;
-			                        return 0;
-			                    }
-			                }
-
-			                if(is_grounded && dp == instance_place(x,y,obj_drop_point)) {
-			                    ctl.trigger_fallthrough = true;
-			                    is_grounded = false;
-			                }
-
-			            }
-			            //If best neighbor is connected by a jump point, move to the jump point
-			            else if(!is_undefined(jp)) {
-
-			                if(x < jp.jump_start_x) { ctl.trigger_right = true; }
-			                else if(x > jp.jump_start_x) { ctl.trigger_left = true; }
-
-			                //If at this point we reach the jump point, have the ai jump
-			                if(is_grounded && jp == instance_place(x,y,obj_jump_point) && Math.abs(x - jp.jump_start_x) < 15) {
-			                    x = jp.jump_start_x;
-
-			                    //If it's a ladder jump point
-			                    
-			                    if(jp.is_ladder_jp) {
-			                        ctl.trigger_up = true;
-			                        ladder = instance_place(x,y,obj_ladder);    
-			                        if(ladder != null) {
-			                            //alert("jumping up to ladder")
-			                            y--;
-			                            ladder_dir = -1;
-			                            return 0;
-			                        }
-			                    }
-
-			                    if(jp.dir != dir) {
-			                        ai_change_dir();
-			                    }
-			                    var jxy = get_jump_vels(jp);
-			                    ai_jump_vel_x = jxy[0];
-			                    vel_y = jxy[1];
-			                    is_jumping = true;
-			                    can_boost_jump = false;
-			                    is_grounded = false;
-			                    jump_point = jp;
-			                    ctl.trigger_left = false;
-			                    ctl.trigger_right = false;
-			                }
-			            }
-			            //Otherwise just move to the waypoint normally
-			            else {        
-			                if(waypoint != null && best_neighbor != null) {
-			                    if(waypoint.x < best_neighbor.x) { ctl.trigger_right = true; }
-			                    else if(waypoint.x > best_neighbor.x) { ctl.trigger_left = true; }
-			                }
-			            }
-			            
-			        }
-
-			    }
+	        //Otherwise, find the closest nearest waypoint
+	        else if(waypoint != null) {
+	            move_to_best_neighbor();
+	        }
 
 			    if(ctl.trigger_right && dir == -1) ai_change_dir();
 			    if(ctl.trigger_left && dir == 1) ai_change_dir();
@@ -430,21 +350,23 @@ package
 			    if(is_grounded) {
 			        
 			        var do_stop = false;
-			        if(ctl.trigger_left && place_meeting(x-walk_speed,y,obj_wall)) {
+			        if(ctl.trigger_left && collide("WallCol", x-walk_speed,y) != null) {
 			            ctl.trigger_left = false;
 			            do_stop = true;
 			        }
-			        if(ctl.trigger_right && place_meeting(x+walk_speed,y,obj_wall)) {
+			        if(ctl.trigger_right && collide("WallCol",x+walk_speed,y) != null) {
 			            ctl.trigger_right = false;
 			            do_stop = true;
 			        }
 
+			        /*
 			        if(do_stop) {
 			            confuse_time = FP.elapsed;
 			            ai_state = AIS_ARRIVE_CONFUSED;
 			            is_investigator = false;
 			            squad.has_disturbance = false;
 			        }
+			        */
 
 			    }
 
