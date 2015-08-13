@@ -1,5 +1,7 @@
 package entities 
 {
+	import Base;
+	import Sprites;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Draw;
 	import net.flashpunk.FP;

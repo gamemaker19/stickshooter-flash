@@ -2,18 +2,21 @@ package
 {
 	import Global;
 	import entities.Collider;
+	import LevelAdder;
 	import entities.Stickmen.*;
 	import entities.Wall;
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
+	import net.flashpunk.utils.Draw;
 	
 	public class Level1 extends World
 	{
-		private var w2:Wall;
-		
 		public function Level1() 
 		{
-			add(new Global());
+			LevelAdder.Add(this, LevelAdder.ROOM3);
+			
+			/*
 			add(new Agent());
 			
 			var w:Wall = new Wall();
@@ -23,6 +26,7 @@ package
 			w2 = new Wall();
 			w2.x = 200; w2.y = 100; w2.xscale = 1; w2.yscale = 10;
 			add(w2);
+			*/
 		}
 		
 		override public function update():void

@@ -1,5 +1,6 @@
 package 
 {
+	import Base;
 	public class ChildData 
 	{
 		public var parent:Base;

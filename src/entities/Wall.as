@@ -1,6 +1,9 @@
 package entities 
 {
+	import Base;
+	import Sprites;
 	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	
 	public class Wall extends Base
 	{
@@ -22,11 +25,13 @@ package entities
 		
 		public function Wall() 
 		{
-			type = "Wall";
+			//visible = false;
+			type = "WallCol";
 		}
 		
 		override public function update():void
 		{
+			super.update();
 			set_sprite(Sprites.wall_visible);
 		}
 		

@@ -22,63 +22,6 @@ package
 			return (angle >= 50 && angle <= 130) || (angle >= 230 && angle <= 310);
 		}
 		
-		public static function is_above_platform(entity:Entity, wall:Wall):Boolean
-		{
-			//Climbing/fallthru stickmen go thru platforms
-			
-			/*
-			 * TODO FIX THIS
-			if(is_a(obj_stickman)) {
-				if(state == CLIMB || trigger_fallthrough) {
-					return false;
-				}
-			}
-			*/
-
-			if(wall.is_diagonal) {
-				return above_diag(entity,wall);
-			}
-			else {
-				return entity.y+(Math.abs(entity.height)/2)-1 <= wall.y; 
-			}
-		}
-		
-		public static function above_diag(entity:Entity, diag_wall:Wall):Boolean
-		{
-			var cx:Number = entity.x;
-			var cy:Number = entity.y + Math.abs(entity.height)/2;
-
-			var dx:Number = diag_wall.x;
-			var dy:Number = diag_wall.y;
-
-			var dwidth:Number = diag_wall.thickness;
-			var dir:int;
-			var hypotenuse:Number = diag_wall.length;
-
-			var dangle:Number = diag_wall.angle;
-			if(dangle < 90) {
-				dir = -1;
-			}
-			else {
-				dir = 1;
-				dangle = 180 - dangle;
-			}
-
-			var yslope:Number = hypotenuse * Math.sin(dangle * FP.RAD);
-			var xslope:Number = hypotenuse * Math.cos(dangle * FP.RAD);
-
-			var slope:Number = dir * (yslope / xslope);
-			var b:Number = dy - slope*dx;
-
-			//y = mx + b
-
-			if(cy < slope*cx + b) {
-				return true;
-			}
-
-			return false;
-		}
-		
 		public static function get_bounciness(net_vel_x:Number, collider:Collider, wall:Wall):Number
 		{
 			if(Math.abs(net_vel_x) < 10) {
@@ -158,6 +101,24 @@ package
 			angle = angle % 360;
 
 			return angle;
+		}
+		
+		public static function random_range(lowInclusive:Number, highExclusive:Number):Number
+		{
+			var a:Number = lowInclusive + (highExclusive - lowInclusive) * FP.random;
+			return a;
+		}
+		
+		public static function irandom_range_high_exlusive(lowInclusive:int, highExclusive:int):int
+		{
+			var b:int = random_range(lowInclusive, highExclusive);
+			return int(b);
+		}
+		
+		public static function irandom_range(lowInclusive:int, highInclusive:int):int
+		{
+			var c:int = irandom_range_high_exlusive(lowInclusive, highInclusive+1);
+			return c;
 		}
 		
 	}

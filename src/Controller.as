@@ -93,6 +93,7 @@ package
 			trigger_weapon_1 = Input.pressed(Key.NUMPAD_0);
 			trigger_weapon_2 = Input.pressed(Key.NUMPAD_1);
 			trigger_weapon_3 = Input.pressed(Key.NUMPAD_2);
+			trigger_attack = Input.mousePressed;
 		}
 	}
 

@@ -4,14 +4,18 @@ package
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import entities.Infantry;
 
-	public class Global extends Entity
+	public class Global
 	{
-		public function Global()
+		public function should_draw_arms(infantry:Infantry)
 		{
+			
 		}
-		override public function update():void
+		
+		public function should_draw_weapon(infantry:Infantry)
 		{
+			
 		}
 	}
 }

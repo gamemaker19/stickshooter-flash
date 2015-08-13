@@ -2,7 +2,7 @@ package
 {
 	import net.flashpunk.Engine;
 	import net.flashpunk.FP;
-
+	
 	public class Main extends Engine
 	{
 		public function Main()
@@ -14,7 +14,7 @@ package
 		
 		override public function init():void
 		{
-			trace("FlashPunk has started successfully!");
+			//trace("FlashPunk has started successfully!");
 		}
 	}
 }

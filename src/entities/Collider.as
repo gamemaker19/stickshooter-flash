@@ -1,6 +1,9 @@
 package entities 
 {
+	import Base;
+	import Constants;
 	import IChild;
+	import Util;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Spritemap;
 	
@@ -13,6 +16,7 @@ package entities
 		public var grounded_obj:Object;
 		public var is_solid:Boolean = true;
 		public var is_solid_collider:Boolean = true;
+		public var is_floating:Boolean = false;
 		
 		public var num_bounces:int = 0;
 		
@@ -21,7 +25,7 @@ package entities
 		
 		public function Collider()
 		{
-			type = "Collider";
+			type = "WallCol";
 		}
 		
 		private function get_next_x(net_vel_x:Number):Number
@@ -92,15 +96,15 @@ package entities
 			is_grounded = false;
 			grounded_obj = null;
 			
-			if(vel_y >= 0) {
+			if(collidable && vel_y >= 0) {
 				
-				var ehit:Entity = this.world.collideLine("Wall", left, bottom, right, bottom);
-				if (ehit == null) { ehit = this.world.collideLine("Collider", left, bottom, right, bottom); }
+				var ehit:Entity = this.world.collideLine("WallCol", left, bottom, right, bottom);
 				
 				if (is_obj(ehit,Wall))
 				{
 					var wall:Wall = ehit as Wall;
-					if (wall.is_platform || Util.is_above_platform(this, wall))
+					
+					if (wall.is_platform || is_above_platform(wall))
 					{
 						if (!(wall.is_diagonal && Util.is_angle_steep(wall.angle)))
 						{
@@ -129,6 +133,29 @@ package entities
 		
 		public function post():void
 		{
+			if (collidable)
+			{
+				check_collision();
+			}
+			
+			//Go thru all colliders, update their positions
+			for each(var child:IChild in children)
+			{
+				child.update_position(this);
+			}
+			
+		}
+		
+		override public function update():void
+		{
+			super.update();
+			pre();
+			step();
+			post();
+		}
+		
+		private function check_collision():void
+		{
 			var times:int = 0;
 			var net_vel_x:Number = vel_x + get_move_x();
 			var net_vel_y:Number = vel_y + get_move_y();
@@ -144,7 +171,7 @@ package entities
 			if(Math.abs(net_vel_x) > 0) {
 
 				var hit_xs:Array = new Array();
-				collideTypesInto(["Wall", "Collider"], get_dest_x(net_vel_x), y, hit_xs);
+				collideInto("WallCol", get_dest_x(net_vel_x), y, hit_xs);
 				
 				for each(var hit_x:Object in hit_xs)
 				{
@@ -178,11 +205,11 @@ package entities
 							}
 
 							//Diagonal platforms won't cause x to be pushed unless if not above
-							if(should_do) 
+							if(should_do)
 							{
 								times = 0;
 								
-								while (collide("Wall", get_next_x(net_vel_x), y) == null)
+								while (collide("WallCol", get_next_x(net_vel_x), y) == null)
 								{
 									x += Util.sign(net_vel_x);
 									times++; if(times > Math.abs(net_vel_x)*2) { break; }
@@ -231,7 +258,7 @@ package entities
 			if(Math.abs(net_vel_y) > 0 || Math.abs(orig_net_vel_x) > 0) {
 				
 				var hit_ys:Array = new Array();
-				collideTypesInto(["Collider", "Wall"], x, get_dest_y(net_vel_y), hit_ys);
+				collideInto("WallCol", x, get_dest_y(net_vel_y), hit_ys);
 				
 				for each(var hit_y:Object in hit_ys) {
 					
@@ -239,6 +266,11 @@ package entities
 						
 						var wall_y:Wall = hit_y as Wall;
 
+						if (net_vel_y > 0 && wall_y.is_platform)
+						{
+							var b:int = 0;
+						}
+						
 						//For non-platforms, or if above a platform,
 						if(!wall_y.is_platform || is_above_platform(wall_y))
 						{
@@ -256,7 +288,7 @@ package entities
 							}
 							else {
 								
-								while (collide("Wall", x, get_next_y(net_vel_y)) == null)
+								while (collide("WallCol", x, get_next_y(net_vel_y)) == null)
 								{
 									times++; 
 									if(times > Math.abs(net_vel_y)) { break; }
@@ -285,7 +317,7 @@ package entities
 							
 							times = 0;
 							
-							while (collide("Collider", x, get_next_y(net_vel_y)) == null)
+							while (collide("WallCol", x, get_next_y(net_vel_y)) == null)
 							{
 								times++; 
 								if(times > Math.abs(net_vel_y)) { break; }
@@ -307,12 +339,7 @@ package entities
 				y += net_vel_y;
 
 			}
-	
-			//Go thru all colliders, update their positions
-			for each(var child:IChild in children)
-			{
-				child.update_position(this);
-			}
+			
 			
 			//This section frees objects stuck in walls. It's commented out due to performance concerns.
 			/*
@@ -437,13 +464,6 @@ package entities
 
 			}
 			*/
-		}
-		
-		override public function update():void
-		{
-			pre();
-			step();
-			post();
 		}
 	}
 

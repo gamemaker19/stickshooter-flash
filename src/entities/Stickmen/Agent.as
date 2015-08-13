@@ -11,11 +11,7 @@ package entities.Stickmen
 		
 		override public function update():void
 		{
-			if(x < FP.world.mouseX) dir = 1;
-			else dir = -1;
-			
 			super.update();
-			
 			FP.camera.x = x + halfWidth - FP.screen.width/2;
 			FP.camera.y = y + halfHeight - FP.screen.height / 2;
 		}

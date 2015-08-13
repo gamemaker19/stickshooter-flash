@@ -4,6 +4,7 @@ package
 	import net.flashpunk.FP;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.utils.Draw;
 	public class SpriteData 
 	{
 		public var sprite:Spritemap;
@@ -41,6 +42,8 @@ package
 		public function generate_sprite():Spritemap
 		{
 			var sprite:Spritemap = new Spritemap(spr, width, height);
+			sprite.originX = xorigin;
+			sprite.originY = yorigin;
 			
 			var framesArr:Array = new Array();
 			for (var i:int = 0; i < frames; i++)
@@ -51,6 +54,22 @@ package
 			sprite.add("1", framesArr, 30, true);
 			
 			return sprite;
+		}
+		
+		//Draws the spritedata
+		public function draw(x:Number, y:Number, xscale:Number, yscale:Number, angle:Number, color:uint, alpha:Number, frame:int = 0):void
+		{
+			var sprite:Spritemap = generate_sprite();
+			sprite.x = x;
+			sprite.y = y;
+			sprite.scaleX = xscale;
+			sprite.scaleY = yscale;
+			sprite.angle = angle;
+			sprite.color = color;
+			sprite.alpha = alpha;
+			sprite.frame = frame;
+			
+			Draw.graphic(sprite);
 		}
 		
 	}

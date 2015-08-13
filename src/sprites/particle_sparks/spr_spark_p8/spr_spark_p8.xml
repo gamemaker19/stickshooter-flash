@@ -1,0 +1,36 @@
+<sprite>
+	<xorigin>4</xorigin>
+	<yorigin>5</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>8</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>9</bbox_bottom>
+	<width>9</width>
+	<height>10</height>
+	<num_frames>21</num_frames>
+	<frames>
+		<frame index="0">spr_spark_p8_0.png</frame>
+		<frame index="1">spr_spark_p8_1.png</frame>
+		<frame index="2">spr_spark_p8_2.png</frame>
+		<frame index="3">spr_spark_p8_3.png</frame>
+		<frame index="4">spr_spark_p8_4.png</frame>
+		<frame index="5">spr_spark_p8_5.png</frame>
+		<frame index="6">spr_spark_p8_6.png</frame>
+		<frame index="7">spr_spark_p8_7.png</frame>
+		<frame index="8">spr_spark_p8_8.png</frame>
+		<frame index="9">spr_spark_p8_9.png</frame>
+		<frame index="10">spr_spark_p8_10.png</frame>
+		<frame index="11">spr_spark_p8_11.png</frame>
+		<frame index="12">spr_spark_p8_12.png</frame>
+		<frame index="13">spr_spark_p8_13.png</frame>
+		<frame index="14">spr_spark_p8_14.png</frame>
+		<frame index="15">spr_spark_p8_15.png</frame>
+		<frame index="16">spr_spark_p8_16.png</frame>
+		<frame index="17">spr_spark_p8_17.png</frame>
+		<frame index="18">spr_spark_p8_18.png</frame>
+		<frame index="19">spr_spark_p8_19.png</frame>
+		<frame index="20">spr_spark_p8_20.png</frame>
+	</frames>
+</sprite>

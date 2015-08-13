@@ -1,0 +1,20 @@
+<sprite>
+	<xorigin>10</xorigin>
+	<yorigin>8</yorigin>
+	<sepmasks>0</sepmasks>
+	<bboxmode>0</bboxmode>
+	<bbox_left>0</bbox_left>
+	<bbox_right>20</bbox_right>
+	<bbox_top>0</bbox_top>
+	<bbox_bottom>15</bbox_bottom>
+	<width>21</width>
+	<height>16</height>
+	<num_frames>5</num_frames>
+	<frames>
+		<frame index="0">spr_blood_p7_0.png</frame>
+		<frame index="1">spr_blood_p7_1.png</frame>
+		<frame index="2">spr_blood_p7_2.png</frame>
+		<frame index="3">spr_blood_p7_3.png</frame>
+		<frame index="4">spr_blood_p7_4.png</frame>
+	</frames>
+</sprite>

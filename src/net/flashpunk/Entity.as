@@ -798,7 +798,9 @@ package net.flashpunk
 		public var xscale:Number = 1;
 		public var yscale:Number = 1;
 		public var angle:Number = 0;
-				
+		public var color:uint = 0xFFFFFF;
+		public var alpha:Number = 1;
+		
 		public var const_hitbox:Boolean = false;
 		public var const_hitbox_x:int = 0;
 		public var const_hitbox_y:int = 0;
@@ -806,7 +808,51 @@ package net.flashpunk
 		public var const_hitbox_h:int = 0;
 
 		public var graphic_dict:Dictionary = new Dictionary();
-		public var dir:int = 1;
+		//public var dir:int = 1;
+		public function get dir():int
+		{
+			return Util.sign(xscale);
+		}
+		public function set dir(val:int):void
+		{
+			if (dir != 1 && dir != -1) { throw new Error("Can't set dir to anything but 1 or -1"); }
+			xscale = Math.abs(xscale) * val;
+		}
+		public function change_hitbox(cx:int, cy:int, cw:int, ch:int):void
+		{
+			const_hitbox = true;
+			const_hitbox_x = cx;
+			const_hitbox_y = cy;
+			const_hitbox_w = cw;
+			const_hitbox_h = ch;
+		}
+		public function set image_speed(val:Number):void
+		{
+			if (graphic == null) return;
+			(graphic as Spritemap).rate = val;
+		}
+		public function get image_speed():Number
+		{
+			if (graphic == null) return NaN;
+			return (graphic as Spritemap).rate;
+		}
+		
+		public function get image_index():int
+		{
+			if (graphic == null) return NaN;
+			return (graphic as Spritemap).frame;
+		}
+		public function set image_index(val:int):void
+		{
+			if (graphic == null) return;
+			(graphic as Spritemap).frame = val;
+		}
+		
+		public function get image_number():int
+		{
+			if (graphic == null) return NaN;
+			return (graphic as Spritemap).frameCount;
+		}
 		
 	}
 }

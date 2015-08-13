@@ -18,7 +18,7 @@ import re
 
 def get_flash_code_1(basename, path):
 	code = \
-	'\t\t[Embed(source = "<SPRPATH>")] private static const <SPRVARNAMECAPS>:Class;\n' + \
+	'\t\t[Embed(source = "<SPRPATH>")] public static const <SPRVARNAMECAPS>:Class;\n' + \
 	'\t\t[Embed(source = "<XMLPATH>", mimeType = "application/octet-stream")] public static const <SPRVARNAMECAPS>_XML:Class;\n' + \
 	'\t\tpublic static var <SPRVARNAME>:SpriteData;\n'
 	path = path[:-6]
@@ -38,14 +38,14 @@ def get_flash_code_2(basename):
 	return code
 
 #Delete the dest sprites dir files/subdirs first
-for the_file in os.listdir(flash_spr_path):
-	file_path = os.path.join(flash_spr_path, the_file)
-	try:
-		if os.path.isfile(file_path):
-			os.unlink(file_path)
-		elif os.path.isdir(file_path): shutil.rmtree(file_path)
-	except e:
-		print(e)
+#for the_file in os.listdir(flash_spr_path):
+#	file_path = os.path.join(flash_spr_path, the_file)
+#	try:
+#		if os.path.isfile(file_path):
+#			os.unlink(file_path)
+#		elif os.path.isdir(file_path): shutil.rmtree(file_path)
+#	except e:
+#		print(e)
 
 tree1 = ET.parse(project_gmx_path)
 root1 = tree1.getroot()

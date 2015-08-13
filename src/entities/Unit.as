@@ -1,7 +1,10 @@
 package entities 
 {
+	import AI;
+	import Controller;
 	import flash.accessibility.AccessibilityImplementation;
 	import net.flashpunk.Entity;
+	import net.flashpunk.FP;
 	
 	/*
 	 * Generally speaking, a unit is a class that represents an entity that can fight, take damage, move, etc.
@@ -21,9 +24,14 @@ package entities
 		public var move_y:Number = 0;
 		
 		public var ctl:Controller;
-		//public var ai:AI;
+		public var ai:AI;
 		
-		public var state:UnitState;
+		public var state:int;
+		
+		public function get is_human():Boolean
+		{
+			return true;
+		}
 		
 		public function Unit() 
 		{
@@ -32,21 +40,16 @@ package entities
 		
 		override public function update():void
 		{
-			ctl.update();	//Controls must be the first thing obtained if human player
+			if (is_human)
+			{
+				ctl.update();	//Controls must be the first thing obtained if human player
+			}
+			else
+			{
+				ai.update();
+			}
+			
 			super.update();
-		}
-		
-		//Change direction to look angle
-		public function normalize_look_angle():void
-		{
-			look_angle = Util.angle_normal(look_angle);
-
-			if(look_angle > 90 && look_angle < 270) {
-				if(dir == 1) { look_angle = Util.angle_normal(180 - look_angle); }
-			}
-			else {
-				if(dir == -1) { look_angle = Util.angle_normal(180 - look_angle); }
-			}
 		}
 		
 	}
