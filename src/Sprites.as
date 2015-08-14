@@ -250,8 +250,8 @@ package
 		[Embed(source = "sprites/props/spr_door_side/spr_door_side.xml", mimeType = "application/octet-stream")] public static const SPR_DOOR_SIDE_XML:Class;
 		public static var door_side:SpriteData;
 
-		[Embed(source = "sprites/mask/spr_drop_point/spr_drop_point.png")] public static const SPR_DROP_POINT:Class;
-		[Embed(source = "sprites/mask/spr_drop_point/spr_drop_point.xml", mimeType = "application/octet-stream")] public static const SPR_DROP_POINT_XML:Class;
+		[Embed(source = "sprites/masks/spr_drop_point/spr_drop_point.png")] public static const SPR_DROP_POINT:Class;
+		[Embed(source = "sprites/masks/spr_drop_point/spr_drop_point.xml", mimeType = "application/octet-stream")] public static const SPR_DROP_POINT_XML:Class;
 		public static var drop_point:SpriteData;
 
 		[Embed(source = "sprites/equipment/spr_elite_head/spr_elite_head.png")] public static const SPR_ELITE_HEAD:Class;
@@ -358,8 +358,8 @@ package
 		[Embed(source = "sprites/player/spr_jump_kick/spr_jump_kick.xml", mimeType = "application/octet-stream")] public static const SPR_JUMP_KICK_XML:Class;
 		public static var jump_kick:SpriteData;
 
-		[Embed(source = "sprites/spr_jump_point/spr_jump_point.png")] public static const SPR_JUMP_POINT:Class;
-		[Embed(source = "sprites/spr_jump_point/spr_jump_point.xml", mimeType = "application/octet-stream")] public static const SPR_JUMP_POINT_XML:Class;
+		[Embed(source = "sprites/masks/spr_jump_point/spr_jump_point.png")] public static const SPR_JUMP_POINT:Class;
+		[Embed(source = "sprites/masks/spr_jump_point/spr_jump_point.xml", mimeType = "application/octet-stream")] public static const SPR_JUMP_POINT_XML:Class;
 		public static var jump_point:SpriteData;
 
 		[Embed(source = "sprites/spr_key/spr_key.png")] public static const SPR_KEY:Class;
@@ -406,6 +406,10 @@ package
 		[Embed(source = "sprites/level1_interior/spr_l1_9/spr_l1_9.xml", mimeType = "application/octet-stream")] public static const SPR_L1_9_XML:Class;
 		public static var l1_9:SpriteData;
 
+		[Embed(source = "sprites/masks/spr_ladder/spr_ladder.png")] public static const SPR_LADDER:Class;
+		[Embed(source = "sprites/masks/spr_ladder/spr_ladder.xml", mimeType = "application/octet-stream")] public static const SPR_LADDER_XML:Class;
+		public static var ladder:SpriteData;
+
 		[Embed(source = "sprites/spr_ladder_img/spr_ladder_img.png")] public static const SPR_LADDER_IMG:Class;
 		[Embed(source = "sprites/spr_ladder_img/spr_ladder_img.xml", mimeType = "application/octet-stream")] public static const SPR_LADDER_IMG_XML:Class;
 		public static var ladder_img:SpriteData;
@@ -414,8 +418,8 @@ package
 		[Embed(source = "sprites/props/spr_limo/spr_limo.xml", mimeType = "application/octet-stream")] public static const SPR_LIMO_XML:Class;
 		public static var limo:SpriteData;
 
-		[Embed(source = "sprites/mask/spr_mask_dead/spr_mask_dead.png")] public static const SPR_MASK_DEAD:Class;
-		[Embed(source = "sprites/mask/spr_mask_dead/spr_mask_dead.xml", mimeType = "application/octet-stream")] public static const SPR_MASK_DEAD_XML:Class;
+		[Embed(source = "sprites/masks/spr_mask_dead/spr_mask_dead.png")] public static const SPR_MASK_DEAD:Class;
+		[Embed(source = "sprites/masks/spr_mask_dead/spr_mask_dead.xml", mimeType = "application/octet-stream")] public static const SPR_MASK_DEAD_XML:Class;
 		public static var mask_dead:SpriteData;
 
 		[Embed(source = "sprites/weapon/spr_minigun/spr_minigun.png")] public static const SPR_MINIGUN:Class;
@@ -626,6 +630,10 @@ package
 		[Embed(source = "sprites/spr_wall_diag/spr_wall_diag.xml", mimeType = "application/octet-stream")] public static const SPR_WALL_DIAG_XML:Class;
 		public static var wall_diag:SpriteData;
 
+		[Embed(source = "sprites/masks/spr_wall_hurt/spr_wall_hurt.png")] public static const SPR_WALL_HURT:Class;
+		[Embed(source = "sprites/masks/spr_wall_hurt/spr_wall_hurt.xml", mimeType = "application/octet-stream")] public static const SPR_WALL_HURT_XML:Class;
+		public static var wall_hurt:SpriteData;
+
 		[Embed(source = "sprites/spr_wall_visible/spr_wall_visible.png")] public static const SPR_WALL_VISIBLE:Class;
 		[Embed(source = "sprites/spr_wall_visible/spr_wall_visible.xml", mimeType = "application/octet-stream")] public static const SPR_WALL_VISIBLE_XML:Class;
 		public static var wall_visible:SpriteData;
@@ -633,6 +641,14 @@ package
 		[Embed(source = "sprites/spr_waypoint_exit/spr_waypoint_exit.png")] public static const SPR_WAYPOINT_EXIT:Class;
 		[Embed(source = "sprites/spr_waypoint_exit/spr_waypoint_exit.xml", mimeType = "application/octet-stream")] public static const SPR_WAYPOINT_EXIT_XML:Class;
 		public static var waypoint_exit:SpriteData;
+
+		[Embed(source = "sprites/masks/spr_waypoint_link/spr_waypoint_link.png")] public static const SPR_WAYPOINT_LINK:Class;
+		[Embed(source = "sprites/masks/spr_waypoint_link/spr_waypoint_link.xml", mimeType = "application/octet-stream")] public static const SPR_WAYPOINT_LINK_XML:Class;
+		public static var waypoint_link:SpriteData;
+
+		[Embed(source = "sprites/masks/spr_waypoint_pair/spr_waypoint_pair.png")] public static const SPR_WAYPOINT_PAIR:Class;
+		[Embed(source = "sprites/masks/spr_waypoint_pair/spr_waypoint_pair.xml", mimeType = "application/octet-stream")] public static const SPR_WAYPOINT_PAIR_XML:Class;
+		public static var waypoint_pair:SpriteData;
 
 		[Embed(source = "sprites/weapon/spr_weapon_pistol/spr_weapon_pistol.png")] public static const SPR_WEAPON_PISTOL:Class;
 		[Embed(source = "sprites/weapon/spr_weapon_pistol/spr_weapon_pistol.xml", mimeType = "application/octet-stream")] public static const SPR_WEAPON_PISTOL_XML:Class;
@@ -743,6 +759,7 @@ package
 			Sprites.l1_7 = new SpriteData(SPR_L1_7_XML, SPR_L1_7);
 			Sprites.l1_8 = new SpriteData(SPR_L1_8_XML, SPR_L1_8);
 			Sprites.l1_9 = new SpriteData(SPR_L1_9_XML, SPR_L1_9);
+			Sprites.ladder = new SpriteData(SPR_LADDER_XML, SPR_LADDER);
 			Sprites.ladder_img = new SpriteData(SPR_LADDER_IMG_XML, SPR_LADDER_IMG);
 			Sprites.limo = new SpriteData(SPR_LIMO_XML, SPR_LIMO);
 			Sprites.mask_dead = new SpriteData(SPR_MASK_DEAD_XML, SPR_MASK_DEAD);
@@ -798,8 +815,11 @@ package
 			Sprites.uncheckpoint = new SpriteData(SPR_UNCHECKPOINT_XML, SPR_UNCHECKPOINT);
 			Sprites.wall = new SpriteData(SPR_WALL_XML, SPR_WALL);
 			Sprites.wall_diag = new SpriteData(SPR_WALL_DIAG_XML, SPR_WALL_DIAG);
+			Sprites.wall_hurt = new SpriteData(SPR_WALL_HURT_XML, SPR_WALL_HURT);
 			Sprites.wall_visible = new SpriteData(SPR_WALL_VISIBLE_XML, SPR_WALL_VISIBLE);
 			Sprites.waypoint_exit = new SpriteData(SPR_WAYPOINT_EXIT_XML, SPR_WAYPOINT_EXIT);
+			Sprites.waypoint_link = new SpriteData(SPR_WAYPOINT_LINK_XML, SPR_WAYPOINT_LINK);
+			Sprites.waypoint_pair = new SpriteData(SPR_WAYPOINT_PAIR_XML, SPR_WAYPOINT_PAIR);
 			Sprites.weapon_pistol = new SpriteData(SPR_WEAPON_PISTOL_XML, SPR_WEAPON_PISTOL);
 			//ENDAUTOGEN2
 		}

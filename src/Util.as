@@ -2,6 +2,7 @@ package
 {
 	import entities.Wall;
 	import flash.display.BitmapEncodingColorSpace;
+	import flash.geom.Point;
 	import net.flashpunk.Entity;
 	import flash.utils.*;
 	import mx.controls.Alert;
@@ -10,10 +11,49 @@ package
 	
 	public class Util 
 	{
-		public static function get_entities(obj:Object):Array
+		public static function point_in_triangle(x:Number,y:Number, x1:Number, y1:Number, x2:Number, y2:Number, x3:Number, y3:Number):Boolean
+		{
+			return isInsideTriangle(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), new Point(x, y));
+		}
+		
+		private static function isInsideTriangle(A:Point,B:Point,C:Point,P:Point):Boolean {
+			var planeAB:Number = (A.x-P.x)*(B.y-P.y)-(B.x-P.x)*(A.y-P.y);
+			var planeBC:Number = (B.x-P.x)*(C.y-P.y)-(C.x - P.x)*(B.y-P.y);
+			var planeCA:Number = (C.x-P.x)*(A.y-P.y)-(A.x - P.x)*(C.y-P.y);
+			return sgn(planeAB)==sgn(planeBC) && sgn(planeBC)==sgn(planeCA);
+		}
+		
+		private static function sgn(n:Number):int {
+			return Math.abs(n)/n;
+		}
+		
+		public static function raycast(type:String, x:Number, y:Number, angle:Number, distance:Number):Entity
+		{
+			var x2:Number = x + (dcos(angle)*distance);
+			var y2:Number = y + (dsin(angle)*distance);
+
+			return FP.world.collideLine(type,x,y,x2,y2,1);
+		}
+
+		public static function point_angle_normal(x1:Number,y1:Number,x2:Number,y2:Number):Number
+		{
+			return Util.angle_normal(FP.angle(x1,y1,x2,y2));
+		}
+
+		public static function dsin(degrees:Number):Number
+		{
+			return Math.sin(degrees * -FP.RAD);
+		}
+
+		public static function dcos(degrees:Number):Number
+		{
+			return Math.cos(degrees * -FP.RAD);
+		}
+
+		public static function get_entities(cls:Class):Array
 		{
 			var retList:Array = [];
-			world.getClass(obj, retList);
+			FP.world.getClass(cls, retList);
 			return retList;
 		}
 

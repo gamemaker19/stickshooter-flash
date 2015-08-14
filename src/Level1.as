@@ -15,7 +15,7 @@ package
 		public function Level1() 
 		{
 			LevelAdder.add(this, LevelAdder.ROOM3);
-			LevelAdder.set_waypoints();
+			LevelAdder.set_waypoints(this);
 			
 			/*
 			add(new Agent());

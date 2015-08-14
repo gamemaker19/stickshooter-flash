@@ -51,6 +51,16 @@ for file in glob.glob(gml_lvl_path + "*.room.gmx"):
 		else:
 			data += "is_platform=\"false\""
 
+		if "is_ladder_jp=true" in code:
+			data += "is_ladder_jp=\"true\""
+		else:
+			data += "is_ladder_jp=\"false\""
+
+		if "is_ladder_dp=true" in code:
+			data += "is_ladder_dp=\"true\""
+		else:
+			data += "is_ladder_dp=\"false\""
+
 		data += " />"
 
 	data += "\n\t</objects>\n"

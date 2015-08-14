@@ -1,5 +1,7 @@
 package 
 {
+	import entities.Unit;
+	import flash.geom.Point;
 	public class Squad
 	{
 		public var units:Vector.<Unit>;
