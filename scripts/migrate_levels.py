@@ -1,4 +1,4 @@
-gml_lvl_path = "C:/Users/username/Desktop/Everything/Game Projects/StickShooter Project/Stick-Shooter/rooms/test/"
+gml_lvl_path = "C:/Users/username/Desktop/Everything/Game Projects/StickShooter Project/Stick-Shooter/rooms/"
 flash_lvl_path = "C:/Users/username/Desktop/Everything/Game Projects/StickShooter Flash/src/levels/"
 
 
@@ -18,6 +18,10 @@ for file in glob.glob(gml_lvl_path + "*.room.gmx"):
 	tree = ET.parse(file)
 	root = tree.getroot()
 	roomname = basename(file).split(".")[0]
+
+	if(roomname != "room3"):
+		continue
+
 	instances = root.find("instances")
 
 	data = "<level>\n"
@@ -61,12 +65,15 @@ for file in glob.glob(gml_lvl_path + "*.room.gmx"):
 		else:
 			data += "is_ladder_dp=\"false\""
 
+		if "name=" in code:
+			name = re.search('name="(.+?)"',code)
+			data += ' name="' + name.group(1) + '"'
 		data += " />"
 
 	data += "\n\t</objects>\n"
 	data += "</level>"
 
-	print(data)
+	#print(data)
 
 	filename = flash_lvl_path + roomname + ".xml"
 

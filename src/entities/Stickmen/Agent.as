@@ -7,6 +7,7 @@ package entities.Stickmen
 		public function Agent() 
 		{
 			super();
+			is_human = true;
 		}
 		
 		override public function update():void

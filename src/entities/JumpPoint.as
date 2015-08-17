@@ -4,10 +4,6 @@ package entities
 	import net.flashpunk.Graphic;
 	import net.flashpunk.Mask;
 	
-	/**
-	 * ...
-	 * @author 
-	 */
 	public class JumpPoint extends WaypointLink 
 	{
 		public var is_ladder_jp:Boolean;

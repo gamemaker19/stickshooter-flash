@@ -1,6 +1,7 @@
 package 
 {
 	import entities.Projectile;
+	import net.flashpunk.masks.Pixelmask;
 	import SpriteData;
 	import net.flashpunk.Entity;
 	import net.flashpunk.Graphic;

@@ -8,6 +8,7 @@ package
 	import mx.controls.Alert;
 	import net.flashpunk.FP;
 	import entities.Collider;
+	import net.flashpunk.World;
 	
 	public class Util 
 	{
@@ -60,7 +61,8 @@ package
 		public static function is_obj(obj:Object, type:Class):Boolean
 		{
 			if (obj == null) return false;
-			return obj is Class(getDefinitionByName(getQualifiedClassName(obj)));
+			var retVal:Boolean = obj is Class(getDefinitionByName(getQualifiedClassName(type)));
+			return retVal;
 		}
 		
 		public static function is_angle_steep(angle:Number):Boolean

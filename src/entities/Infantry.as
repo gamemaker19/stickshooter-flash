@@ -69,7 +69,7 @@ package entities
 		public var max_auto_reload_time:Number = 0.75;
 		public var no_ammo_time:Number = 0;
 		public var max_no_ammo_time:Number = 0;
-
+		
 		public function Infantry() 
 		{
 			super();
@@ -223,7 +223,8 @@ package entities
 		override public function render():void 
 		{
 			super.render();
-			//Draw arms here
+			Draw.line(_tx1, _ty1, _tx2, _ty2);
+			Draw.line(_tx1, _ty1, _tx3, _ty3);
 			
 		}
 		
@@ -745,15 +746,15 @@ package entities
 				*/
 			}
 			else if (state == UnitState.POINT) {
-				/*
+				
 			    move_x = 0;
-			    sprite_index = spr_player_idle;
+			    set_sprite(Sprites.player_idle);
 			    alert_others_time += FP.elapsed;
 			    if(alert_others_time >= max_alert_others_time) {
 			        alert_others_time = 0;
-			        state = IDLE;
+			        state = UnitState.IDLE;
 			    }
-				*/
+				
 			}
 			else if(state == UnitState.GET_UP) {
 			    set_sprite(Sprites.player_dead, -1);
@@ -806,24 +807,27 @@ package entities
 			move_x = 0;
 			move_y = 0;
 			
-			if(x < FP.world.mouseX) dir = 1;
-			else dir = -1;
-			
-			//if(weapon_switch_time == 0) {
-			look_angle = FP.angle(arm_x, arm_y, FP.world.mouseX, FP.world.mouseY);
-			//weapon_switch_save_angle = look_angle;
-			//weapon_switch_dir = dir;
-			//}
-			
-			look_angle = Util.angle_normal(look_angle);
+			if (is_human)
+			{
+				if(x < FP.world.mouseX) dir = 1;
+				else dir = -1;
+				
+				//if(weapon_switch_time == 0) {
+				look_angle = FP.angle(arm_x, arm_y, FP.world.mouseX, FP.world.mouseY);
+				//weapon_switch_save_angle = look_angle;
+				//weapon_switch_dir = dir;
+				//}
+				
+				look_angle = Util.angle_normal(look_angle);
 
-			if(look_angle > 90 && look_angle < 270) {
-				if(dir == 1) { look_angle = Util.angle_normal(180 - look_angle); }
+				if(look_angle > 90 && look_angle < 270) {
+					if(dir == 1) { look_angle = Util.angle_normal(180 - look_angle); }
+				}
+				else {
+					if(dir == -1) { look_angle = Util.angle_normal(180 - look_angle); }
+				}
 			}
-			else {
-				if(dir == -1) { look_angle = Util.angle_normal(180 - look_angle); }
-			}
-			
+				
 			prev_jumping = is_jumping;
 			prev_crouch = is_crouching;
 			
@@ -971,7 +975,7 @@ package entities
 		
 		public override function update_ai():void
 		{
-			super.update();
+			super.update_ai();
 			
 			if(is_down) { return; }
 
@@ -1059,7 +1063,7 @@ package entities
 				}
 
 				else {
-
+					
 					if(!can_see_target(target as Infantry))
 					{
 						target = null;
@@ -1382,7 +1386,14 @@ package entities
 			dir *= -1;
 			look_angle = Util.angle_normal(180 - look_angle);
 		}
-
+	
+		public var _tx1:Number = 0;
+		public var _ty1:Number = 0;
+		public var _tx2:Number = 0;
+		public var _ty2:Number = 0;
+		public var _tx3:Number = 0;
+		public var _ty3:Number = 0;
+		
 		//Attempt to get a target
 		public function get_target(asight_range:int):Unit
 		{
@@ -1393,14 +1404,26 @@ package entities
 			var ty2:Number = head_y-Util.dsin(look_angle-20)*600;
 			var tx3:Number = head_x+Util.dcos(look_angle+20)*600;
 			var ty3:Number = head_y-Util.dsin(look_angle+20)*600;
-
+	
+			_tx1 = tx1;
+			_tx2 = tx2;
+			_tx3 = tx3;
+			_ty1 = ty1;
+			_ty2 = ty2;
+			_ty3 = ty3;
+			
 			var potential_hits:Array = new Array();
-
+			
 			for each(var unit:Unit in Global.units)
 			{
-				if(Util.point_in_triangle(unit.x,unit.y,tx1,ty1,tx2,ty2,tx3,ty3) && unit.alliance != alliance && !unit.is_down)
+				var iunit:Infantry = unit as Infantry;
+				if (
+					(Util.point_in_triangle(iunit.head_x, iunit.head_y, tx1, ty1, tx2, ty2, tx3, ty3) || 
+					Util.point_in_triangle(iunit.arm_x, iunit.arm_y, tx1, ty1, tx2, ty2, tx3, ty3) ||
+					Util.point_in_triangle(iunit.foot_x,iunit.foot_y,tx1,ty1,tx2,ty2,tx3,ty3)) &&
+					unit.alliance != alliance && !unit.is_down)
 				{
-					potential_hits.add(unit);
+					potential_hits.push(unit);
 				}
 				if(unit.alliance == alliance || is_down) {
 					collidable = false;
@@ -1429,30 +1452,35 @@ package entities
 		{
 			var facing:Boolean = false;
 			if(!(unit != null && (dir == 1 && unit.x >= x) || (dir == -1 && unit.x <= x))) { return false; }
-
+			
 			//Need to try raycast to see if can see
 			var ang_head:Number = FP.angle(head_x,head_y,unit.head_x,unit.head_y);
 			var ang_body:Number = FP.angle(head_x,head_y,unit.arm_x,unit.arm_y);
 			var ang_foot:Number = FP.angle(head_x,head_y,unit.foot_x,unit.foot_y);
-
+			
+			collidable = false;
+			
 			var hit_head:Entity = Util.raycast("WallCol",head_x,head_y,ang_head,sight_range);
 			var hit_check:Entity = hit_head;
-			if((hit_check as Infantry) != unit) {
-				var hit_body:Entity = Util.raycast("WallCol",head_x,head_y,ang_body,sight_range);
+			
+			if(hit_check !== unit) {
+				var hit_body:Entity = Util.raycast("WallCol", head_x, head_y, ang_body, sight_range);
 				hit_check = hit_body;
 			}
-			if((hit_check as Infantry) != unit) {
+			if(hit_check !== unit) {
 				var hit_foot:Entity = Util.raycast("WallCol",head_x,head_y,ang_foot,sight_range);
 				hit_check = hit_foot;
 			}
-			if((hit_check as Infantry) != unit) {
+			if(hit_check !== unit) {
 				hit_check = null;
 			}
-
-			if(hit_check != null) {
+			
+			collidable = true;
+			
+			if (hit_check != null) {
 				return true;
 			}
-
+			
 			return false;
 		}
 		

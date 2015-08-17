@@ -1,6 +1,7 @@
 package 
 {
 	import entities.Stickmen.Agent;
+	import entities.Stickmen.Stickman;
 	import entities.Wall;
 	import net.flashpunk.World;
 	import net.flashpunk.FP;
@@ -23,12 +24,13 @@ package
 
 				var neighbor_waypoints:Array = new Array();
 				waypointLink.collideInto("Waypoint",waypointLink.x,waypointLink.y,neighbor_waypoints);
-
+				
 				if(neighbor_waypoints.length != 2)
 				{
 					if(waypointLink.collide("WaypointLink",waypointLink.x,waypointLink.y) == null && !Util.is_obj(waypointLink, JumpPoint))
 					{
-						throw new Error("Error: there's a waypoint link not linking exactly two neighbors");
+						trace("Error: there's a waypoint link not linking exactly two neighbors");
+						//throw new Error("Error: there's a waypoint link not linking exactly two neighbors");
 					}
 					continue;
 				}
@@ -36,19 +38,33 @@ package
 				waypoint1 = neighbor_waypoints[0]
 			    waypoint2 = neighbor_waypoints[1];
 
-			    waypoint1.neighbors.add(waypoint2);
-			    waypoint2.neighbors.add(waypoint1);
+			    waypoint1.neighbors.push(waypoint2);
+			    waypoint2.neighbors.push(waypoint1);
 
 			    if(Util.is_obj(waypointLink,JumpPoint)) {
 			        if(waypoint1.y > waypoint2.y) {
 			            waypoint1.neighbor_to_jp[waypoint2] = waypointLink;
-			            //alert(waypoint1.name + " has jump leading to " + waypoint2.name);
+			            trace(waypoint1.name + " has jump leading to " + waypoint2.name);
 			        }
 			        else {
 			            waypoint2.neighbor_to_jp[waypoint1] = waypointLink;
-			            //alert(waypoint2.name + " has jump leading to " + waypoint1.name);
+			            trace(waypoint2.name + " has jump leading to " + waypoint1.name);
 			        }
 			    }
+				else if (Util.is_obj(waypointLink, DropPoint)) {
+			        if(waypoint1.y < waypoint2.y) {
+			            waypoint1.neighbor_to_dp[waypoint2] = waypointLink;
+			            trace(waypoint1.name + " has drop leading to " + waypoint2.name);
+			        }
+			        else {
+			            waypoint2.neighbor_to_dp[waypoint1] = waypointLink;
+			            trace(waypoint2.name + " has drop leading to " + waypoint1.name);
+			        }
+			    }
+				else {
+					waypoint1.neighbors.push(waypoint2);
+					waypoint2.neighbors.push(waypoint1);
+				}
 			}
 
 			waypoint2 = null;
@@ -83,12 +99,11 @@ package
 			            visited[waypoint] = true;
 
 			            var visited_queue:Array = new Array();
-			            visited_queue.add(neighbor);
+			            visited_queue.push(neighbor);
 			            
 			            while(visited_queue.length > 0) {
 
-			                var cur_node:Waypoint = visited_queue[0];
-			                visited_queue.delete_first();
+			                var cur_node:Waypoint = visited_queue.shift();
 			                visited[cur_node] = true;
 			                if(cur_node == dest_waypoint) {
 			                    can_bfs = true;
@@ -100,7 +115,7 @@ package
 			                    
 			                	if(visited[neighbor2] === undefined)
 			                	{
-			                		visited_queue.add(neighbor2);
+			                		visited_queue.push(neighbor2);
 			                	}
 
 			                }
@@ -117,6 +132,16 @@ package
 
 			    }
 			}
+			
+			/*
+			for each(waypoint in Global.waypoints) {
+				var msg:String = waypoint.sname + "'s neighbors: ";
+				for each(neighbor in waypoint.neighbors) {
+					msg += neighbor.sname + ",";
+				}
+				trace(msg)
+			}
+			*/
 		}  
 
 		public static function add(world:World, level:Class):void
@@ -156,9 +181,14 @@ package
 							(entity as JumpPoint).is_ladder_jp = val;
 							break;
 						}
+					case "waypoint":
+						{
+							(entity as Waypoint).name = object.@name;
+							break;
+						}
 					default: break;
 				}
-
+				
 				entity.x = x;
 				entity.y = y;
 				entity.xscale = scaleX;
@@ -174,6 +204,13 @@ package
 		public static function get_obj(key:String):Object
 		{
 			if (key == "player") return new Agent();
+			if (key == "enemy") 
+			{
+				var stickman:Stickman = new Stickman();
+				stickman.alliance = Alliance.ENEMY;
+				stickman.name = "enemy1";
+				return stickman;
+			}
 			if (key == "wall") return new Wall();
 			if (key == "waypoint") return new Waypoint();
 			if (key == "waypoint_link") return new WaypointLink();

@@ -5,7 +5,8 @@ package entities
 		public function WaypointLink() 
 		{
 			super();
-			type = "WaypointLink";			
+			type = "WaypointLink";
+			current_sprite = Sprites.waypoint_link;
 		}
 	}
 

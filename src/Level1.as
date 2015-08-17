@@ -9,14 +9,16 @@ package
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.World;
 	import net.flashpunk.utils.Draw;
+	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 	
 	public class Level1 extends World
 	{
+		public var once:Boolean = false;
+		
 		public function Level1() 
 		{
 			LevelAdder.add(this, LevelAdder.ROOM3);
-			LevelAdder.set_waypoints(this);
-			
 			/*
 			add(new Agent());
 			
@@ -33,6 +35,15 @@ package
 		override public function update():void
 		{
 			super.update();
+			if (!once)
+			{
+				once = true;
+				LevelAdder.set_waypoints(this);
+			}
+			if (Input.check(Key.BACKSPACE))
+			{
+				Global.debug_toogle = true;
+			}
 		}
 	}
 

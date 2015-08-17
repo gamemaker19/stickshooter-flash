@@ -88,17 +88,17 @@ package entities
 				*/
 			}
 			else if(owner.state == UnitState.POINT) {
-			    /*
-				sprite_index = spr_arm_point;
 			    
-			    image_angle = 0;
-			    image_xscale = owner.dir;
-			    image_yscale = 1;
+				set_sprite(Sprites.arm_point);
+			    
+			    angle = 0;
+			    xscale = owner.dir;
+			    yscale = 1;
 
 			    if((owner.max_alert_others_time / FP.elapsed) != 0) {
 			        image_speed = image_number / (owner.max_alert_others_time / FP.elapsed);
 			    }
-				*/
+				
 			}
 			else if(owner.state == UnitState.HANDS_UP) {
 			    set_sprite(Sprites.arm_handsup);
@@ -195,6 +195,10 @@ package entities
 			if (owner.should_draw_arms())
 			{
 				super.render();
+				if (owner.state != UnitState.RELOAD)
+				{
+					return;
+				}
 			}
 			
 			var ox:Number = owner.arm_x;

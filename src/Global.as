@@ -8,6 +8,8 @@ package
 
 	public class Global
 	{
+		public static var debug_toogle:Boolean = false;
+		
 		private static var _units:Array = null;
 		public static function get units():Array
 		{
@@ -28,6 +30,13 @@ package
 			{
 				unit.collidable = true;
 			}
+		}
+		
+		private static var _squad:Squad = null;
+		static public function get squad():Squad 
+		{
+			if (_squad == null) _squad = new Squad();
+			return _squad;
 		}
 	}
 }

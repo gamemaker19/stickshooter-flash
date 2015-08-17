@@ -30,11 +30,12 @@ package entities
 		
 		public override function update():void
 		{
+			super.update();
 			if (graphic != null && !xs_set)
 			{
 				xs_set = true;
-				left_x = x - (graphic as Image).scaledWidth/2;
-				right_x = x + (graphic as Image).scaledWidth / 2;
+				left_x = x - ((graphic as Image).scaledWidth/2);
+				right_x = x + ((graphic as Image).scaledWidth/2);
 			}
 		}
 		

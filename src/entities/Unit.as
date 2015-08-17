@@ -142,15 +142,16 @@ package entities
 		//Confusion
 		public var confuse_time:Number = 0;
 		public var max_confuse_time:Number = 0.4;
-
-		public function get is_human():Boolean
-		{
-			return true;
-		}
+		
+		public var alert_others_time:Number = 0;
+		public var max_alert_others_time:Number = 1;
+		
+		public var is_human:Boolean = false;
 		
 		public function Unit() 
 		{
 			ctl = new Controller();
+			squad = Global.squad;
 		}
 		
 		override public function update():void
